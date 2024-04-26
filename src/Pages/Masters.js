@@ -2,9 +2,16 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ExpenseSheet from "./ExpenseSheet";
+import { Grid } from "@mui/material";
+import userIcon from "../Assets/wp5609640-broly-computer-wallpapers.jpg";
+import MovieTab from "./MastersTabs/MovieTab";
+import LocationTab from "./MastersTabs/LocationTab";
+import CategoryTab from "./MastersTabs/CategoryTab";
+import SubcategoryTab from "./MastersTabs/SubcategoryTab";
+import CrewTab from "./MastersTabs/CrewTab";
+
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -15,13 +22,10 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      style={{ height: "100%" }} // Set height to 100%
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <div style={{ height: "100%" }}>{children}</div>}
     </div>
   );
 }
@@ -47,28 +51,82 @@ const Masters = () => {
   };
   return (
     <div>
-      <h1>Masters</h1>
-      <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ width: " 100%", height: "100vh", background: "#c2cee7" }}>
+        <Box sx={{ borderColor: "divider", height: "16%" }}>
+          <Grid container md={12} sx={{ height: "55%" }}>
+            <Grid
+              item
+              md={12}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="pages-h1">
+                <h1>Masters</h1>
+              </div>
+              <div
+                className="d-flex align-items-end"
+                style={{ marginBottom: "-46px" }}
+              >
+                <div className=" user-div d-flex ">
+                  <div className="username">Username </div>
+                  <div className="user-img-div">
+                    <img src={userIcon} alt="User" />
+                  </div>
+                </div>
+              </div>
+            </Grid>
+          </Grid>
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
+            sx={{
+              height: "45%",
+              // indicatorColor: "red"
+            }}
           >
-            <Tab label="Item One" {...a11yProps("ItemOne")} />
-            <Tab label="Item Two" {...a11yProps("ItemTwo")} />
-            <Tab label="Item Three" {...a11yProps("ItemThree")} />
+            <Tab
+              label="Movie"
+              {...a11yProps("Movie")}
+              sx={{ marginLeft: "30px", marginRight: "50px" }}
+            />
+            <Tab
+              label="Location"
+              {...a11yProps("Location")}
+              sx={{ marginRight: "50px" }}
+            />
+            <Tab
+              label="Category"
+              {...a11yProps("Category")}
+              sx={{ marginRight: "50px" }}
+            />
+            <Tab
+              label="Subcategory"
+              {...a11yProps("Subcategory")}
+              sx={{ marginRight: "50px" }}
+            />
+            <Tab label="Crew" {...a11yProps("Crew")} />
           </Tabs>
         </Box>
-        <CustomTabPanel value={value} index={0}>
-          <ExpenseSheet />
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          Item Two00
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
-          Item Three
-        </CustomTabPanel>
+        <Box sx={{ width: " 100%", height: "84%" }}>
+          <CustomTabPanel value={value} index={0}>
+            <MovieTab />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            <LocationTab />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={2}>
+            <CategoryTab />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={3}>
+            <SubcategoryTab />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={4}>
+            <CrewTab />
+          </CustomTabPanel>
+        </Box>
       </Box>
     </div>
   );

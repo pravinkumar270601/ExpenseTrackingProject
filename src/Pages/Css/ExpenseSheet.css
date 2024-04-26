@@ -1,0 +1,63 @@
+/* user and page name css  start ------------------------------------*/
+.user-div{
+    background-color:white;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.user-img-div{
+    width: 25px;
+    height: 25px; 
+}
+.username{
+    font-size: 14px;
+    padding: 2px;
+    margin-right: 15px;
+    font-weight: 600;
+}
+.user-img-div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+.pages-h1 h1{
+    font-weight: 600;
+    font-size: 25px;
+    font-weight: 600;
+    font-size: 25px;
+    margin-top: 8px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+/* user and page name css end ------------------------------------------*/
+
+.expensesheet-div{
+    background-color: var(--page-bg-color);
+    width: 100%;
+    height: 100%;   
+}
+
+/* .expensesheet-div .box1,.box2{  
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+} */
+/* input {
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+} */
+.table{
+    /* width: 90%; */
+    /* margin: 10px; */
+}
+.expense-sheet{
+    width: 100%;
+    background-color: red;
+    height: 85%;
+}
+
