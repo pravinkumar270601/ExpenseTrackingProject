@@ -1,3 +1,5 @@
+/* cusTable.css
+-------------- */
 
 .Table_search_input {
   width: 100%;
@@ -27,7 +29,13 @@
   } */
 
   .Table_heading{
-    font-size: 2rem;
+    
+    font-size: 1.45rem;
+    font-weight: 650;
+  }
+  .table_search_grid{
+    display: flex;
+    justify-content: flex-end;
   }
   .table_search{
     /* text-align: center; */
@@ -43,8 +51,10 @@
     margin-left: 30%;
   }
   .table-borderless{
-    
-    text-align: center;
+    font-size: 12px;
+    /* text-align: center; */
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .thead_data{
     color: #959595;
@@ -53,6 +63,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    background-color: white;
+    border-radius: 10px;
   }
   
   .pagination .page-item {
@@ -69,5 +81,6 @@
     font-weight: 650;
     
   }
-
- 
+  .custom-table td,th{
+    padding: 4px !important;
+  }

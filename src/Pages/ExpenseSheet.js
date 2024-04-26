@@ -4,6 +4,7 @@ import "../Pages/Css/ExpenseSheet.css";
 import userIcon from "../Assets/wp5609640-broly-computer-wallpapers.jpg";
 import { Button } from "@mui/base";
 import CusTable from "../Components/CustomTable/CusTable";
+import CustomInput from "../Components/CustomInput/CustomInput";
 
 const ExpenseSheet = () => {
   return (
@@ -13,7 +14,7 @@ const ExpenseSheet = () => {
           item
           md={12}
           sx={{
-            height: "12%",
+            height: "13%",
             display: "flex",
             justifyContent: "space-between",
           }}
@@ -31,7 +32,7 @@ const ExpenseSheet = () => {
           </div>
         </Grid>
         {/* input field */}
-        <Grid item md={12} sx={{ height: "42.5%" }}>
+        <Grid item md={12} sx={{ height: "37%" }}>
           <Container
             style={{
               width: "90%",
@@ -40,38 +41,38 @@ const ExpenseSheet = () => {
               borderRadius: "10px",
             }}
           >
-            <Grid container spacing={2}>
+            <Grid container >
               {/* First Row */}
               <Grid item xs={4}>
-                <TextField label="Field 1" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 2" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 3" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
 
               {/* Second Row */}
               <Grid item xs={4}>
-                <TextField label="Field 4" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 5" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 6" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
 
               {/* Third Row */}
               <Grid item xs={4}>
-                <TextField label="Field 7" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 8" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               <Grid item xs={4}>
-                <TextField label="Field 9" variant="outlined" fullWidth />
+              <CustomInput/> 
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
@@ -83,12 +84,13 @@ const ExpenseSheet = () => {
           </Container>
         </Grid>
 
-        <Grid item md={12} sx={{ height: "42.5%" }}>
+        <Grid item md={12} sx={{ height: "50%" }}>
           <Container
             style={{
               width: "90%",
-              // padding: "10px",
+              padding: "0px",
               // borderRadius: "10px",
+              marginTop:"15px"
               
             }}
           >

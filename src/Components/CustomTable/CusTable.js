@@ -9,13 +9,13 @@ import "./CusTable.css";
 import { IoSearch, IoPencil, IoTrash } from "react-icons/io5";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 
-import { Height } from "@mui/icons-material"
+import { Height } from "@mui/icons-material";
 import { FaAngleDoubleRight } from "react-icons/fa";
-;
-
 const CusTable = () => {
   // console.log(MASTER.TableVaues.map((datas)=>{datas.Sno})
-
+  const recordperpage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   function prepage() {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
@@ -25,10 +25,22 @@ const CusTable = () => {
     setCurrentPage(id);
   }
   function Nextpage() {
-    if (currentPage !== npage) {
+    const totalPages = Math.ceil(filteredRecords.length / recordperpage);
+    if (currentPage !== totalPages) {
       setCurrentPage(currentPage + 1);
     }
   }
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset to the first page when search query changes
+  };
+
+  const filteredRecords = MASTER.TableVaues.filter((record) =>
+    Object.values(record).some((value) =>
+      value.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
 
   //   this code is to get object keys
 
@@ -37,90 +49,88 @@ const CusTable = () => {
     console.log("Keys:", keys);
   }
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const recordperpage = 5;
   const lastindex = currentPage * recordperpage;
   const fisrtindex = lastindex - recordperpage;
-  const records = MASTER.TableVaues.slice(fisrtindex, lastindex);
-  const npage = Math.ceil(MASTER.TableVaues.length / recordperpage);
+  const records = filteredRecords.slice(fisrtindex, lastindex);
+  const npage = Math.ceil(filteredRecords.length / recordperpage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <Grid item xs={12}>
-      {/* <Box mt={2} mb={2} ml={8}>
-        <Grid container spacing={1} alignItems="center">
-          <Grid item xs={6}>
-            <h3 className="Table_heading">Movies</h3>
+    <Grid container xs={12} sx={{ width: "100%" }}>
+      <Grid
+        item
+        xs={12}
+        style={{ backgroundColor: "white", height: "220px", width: "100%" }}
+      >
+        <Grid container className="table_search_grid">
+          <Grid item xs={4}>
+            <h3 className="Table_heading" style={{ fontSize: "16px" }}>
+              Movies
+            </h3>
           </Grid>
-          <Grid
-            item
-            xs={6}
-            className="table_search"
-            style={{ marginLeft: "-5%" }}
-          >
+          <Grid item xs={5}></Grid>
+          <Grid item xs={3}>
+            {/* <IoSearch /> */}
+    
+            <input
+              type="text"
+              name="search"
+              placeholder="      Search.."
+              className="Table_search_input"
+              onChange={handleSearchChange}
+            />
+          </Grid>
+        </Grid>
 
-            <div style={{ position: "relative" }}>
-              <IoSearch
-                style={{
-                  position: "absolute",
-                  left: "10px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                }}
-              />
-              <input
-                type="text"
-                name="search"
-                placeholder="      Search.."
-                className="Table_search_input"
-              />
-            </div>
-          </Grid>
-        </Grid>
-      </Box> */}
-      <Grid item xs={12}>
-        <Box mt={2} mb={2}>
-          {" "}
-          {/* Margin top and bottom */}
-          <table className="table table-borderless" style={{ width: "100%" }}>
-            <thead>
-              <tr>
-                {/*in this value is change in click so will pass through via props */}
-                {MASTER.MovieTableHeaders.map((data) => (
-                  <th
-                    scope="col"
-                    className="thead_data"
-                    style={{
-                      color: "rgb(178 183 191 / 92%)",
-                      borderBottom: "1px solid rgb(217 226 231 / 77%)",
-                    }}
-                  >
-                    {data}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {records.map((datas, i) => (
-                <tr key={i}>
-                  {Object.keys(datas).map((key) => (
-                    <td key={key} style={{ fontWeight: "700" }}>
-                      {datas[key]}
-                    </td>
+        <Grid item xs={12}>
+          <Box mt={2} mb={2} sx={{ marginBottom: "0", marginTop: "0" }}>
+            {" "}
+            {/* Margin top and bottom */}
+            <table
+              className="table table-borderless custom-table"
+              style={{ width: "100%" }}
+            >
+              <thead>
+                <tr>
+                  {/*in this value is change in click so will pass through via props */}
+                  {MASTER.MovieTableHeaders.map((data) => (
+                    <th
+                      scope="col"
+                      className="thead_data"
+                      style={{
+                        color: "rgb(178 183 191 / 92%)",
+                        borderBottom: "1px solid rgb(217 226 231 / 77%)",
+                      }}
+                    >
+                      {data}
+                    </th>
                   ))}
-                  <td>
-                    <IoPencil
-                      style={{ marginRight: "10px", color: "#4318FF" }}
-                    />{" "}
-                    {/* Edit icon */}
-                    <IoTrash style={{ color: "#4318FF" }} /> {/* Delete icon */}
-                  </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </Box>
+              </thead>
+              <tbody>
+                {records.map((datas, i) => (
+                  <tr key={i}>
+                    {Object.keys(datas).map((key) => (
+                      <td key={key} style={{ fontWeight: "700" }}>
+                        {datas[key]}
+                      </td>
+                    ))}
+                    <td>
+                      <IoPencil
+                        style={{ marginRight: "10px", color: "#4318FF" }}
+                      />{" "}
+                      {/* Edit icon */}
+                      <IoTrash style={{ color: "#4318FF" }} />{" "}
+                      {/* Delete icon */}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Box>
         </Grid>
+      </Grid>
+      <Grid item xs={12} spacing={1}>
         <Box mt={2} mb={2} style={{ marginRight: "3%" }}>
           <nav className="nav_pagination">
             <ul className="pagination">
@@ -131,8 +141,7 @@ const CusTable = () => {
                   aria-label="Previous"
                   onClick={prepage}
                 >
-                 <FaAngleDoubleLeft />
-
+                  <FaAngleDoubleLeft />
                 </a>
               </li>
               {numbers.map((n, i) => (
@@ -149,7 +158,7 @@ const CusTable = () => {
                   </a>
                 </li>
               ))}
-              <li className="page-item">
+              <li class="page-item">
                 <a
                   className="page-link"
                   href="#"
@@ -162,7 +171,7 @@ const CusTable = () => {
             </ul>
           </nav>
         </Box>
-      
+      </Grid>
     </Grid>
   );
 };
