@@ -110,7 +110,7 @@ const Masters = () => {
             <Tab label="Crew" {...a11yProps("Crew")} />
           </Tabs>
         </Box>
-        <Box sx={{ width: " 100%", height: "84%" }}>
+        <Box sx={{ width: " 100%", height: "82%",marginTop:"1%" }}>
           <CustomTabPanel value={value} index={0}>
             <MovieTab />
           </CustomTabPanel>

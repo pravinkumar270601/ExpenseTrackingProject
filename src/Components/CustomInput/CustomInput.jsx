@@ -34,8 +34,9 @@ const CustomInput = ({ inputNavigate }) => {
         onChange={handleChange}
         InputProps={{
           sx: {
-            height: "40px",
-            borderRadius: "30px",  
+            height: "37px",
+            borderRadius: "12px", 
+            // width:"90%" 
           },
         }}
       />    

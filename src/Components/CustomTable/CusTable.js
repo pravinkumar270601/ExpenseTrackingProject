@@ -60,7 +60,7 @@ const CusTable = () => {
       <Grid
         item
         xs={12}
-        style={{ backgroundColor: "white", height: "220px", width: "100%" }}
+        style={{ backgroundColor: "white", height: "227px", width: "100%",padding:"20px", borderRadius: "15px" }}
       >
         <Grid container className="table_search_grid">
           <Grid item xs={4}>
@@ -68,10 +68,10 @@ const CusTable = () => {
               Movies
             </h3>
           </Grid>
-          <Grid item xs={5}></Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6}></Grid>
+          <Grid item xs={2} mb={1}>
             {/* <IoSearch /> */}
-    
+
             <input
               type="text"
               name="search"
@@ -130,8 +130,8 @@ const CusTable = () => {
           </Box>
         </Grid>
       </Grid>
-      <Grid item xs={12} spacing={1}>
-        <Box mt={2} mb={2} style={{ marginRight: "3%" }}>
+      <Grid item xs={12}>
+        <Box  style={{marginTop:"12px" }}>
           <nav className="nav_pagination">
             <ul className="pagination">
               <li className="page-item">

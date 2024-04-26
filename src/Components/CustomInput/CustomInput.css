@@ -1,11 +1,10 @@
-.custominput-field{
-    height: 10px !important;
-    width: 80%;
-
-}
+/* .custominput-field {
+  height: 10px !important;
+  width: 80%;
+} */
 .custominput-field {
-    height: 40px !important;
-    width: 80%;
+  /* height: 40px !important; */
+  width: 290px !important;
   border-radius: 30px;
   outline: none; /* Remove outline when focused */
   border: 1px solid #ced4da; /* Add border style to replace outline */
@@ -19,11 +18,9 @@
   border-color: 1px solid rgba(0, 0, 0, .1) !important;
 } */
 
-
 /* .custominput-field .Mui-focused {} */
-    /* Add box shadow to replace outline when focused */
-    /* background-color: blueviolet; */
-
+/* Add box shadow to replace outline when focused */
+/* background-color: blueviolet; */
 
 /* .ffff > div fieldset {
     border-radius: 16px !important;
