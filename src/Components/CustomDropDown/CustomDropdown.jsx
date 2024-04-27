@@ -3,7 +3,7 @@ import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import "./CustomDropdownMui.css";
-import "../ComponentsCss/componet.css"
+import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
 const CustomDropdownMui = ({ options, onSelect }) => {
@@ -23,10 +23,11 @@ const CustomDropdownMui = ({ options, onSelect }) => {
         displayEmpty
         inputProps={{ "aria-label": "Select option" }}
         className="customDropdown-input"
-        sx={{ borderRadius: "12px", height: "37px",width:"290px" }}
+        sx={{ borderRadius: "12px", height: "37px", width: "290px" }}
+        
       >
-        <MenuItem value="" disabled>
-          <>Select an option</>
+        <MenuItem value="" disabled  >
+          <div style={{ color: 'rgba(0, 0, 0, 0.3)' }}>Select an option</div>
         </MenuItem>
 
         {options.map((option) => (
