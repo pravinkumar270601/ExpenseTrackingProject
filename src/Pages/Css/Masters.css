@@ -1,7 +1,7 @@
 
 .master-main-page .MuiTabs-indicator.css-1aquho2-MuiTabs-indicator{
     background-color: var(--primary-color);
-    height: 4.9px !important;
+    height: 4.5px !important;
     border-radius: 20px !important;
 }
 .master-main-page button.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary[aria-selected="true"] {

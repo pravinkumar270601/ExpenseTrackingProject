@@ -67,8 +67,8 @@ function SideNav(props) {
               borderRadius: "2px ",
             }}
           >
-            <ListItemIcon>
-              <RiVipCrown2Fill />
+            <ListItemIcon sx={{color:navBoeder === "Masters"? "var(--primary-color)": "none"}} >
+              <RiVipCrown2Fill  style={{fontSize:"25px"}} />
             </ListItemIcon>
             <ListItemText primary="Masters" />
           </ListItemButton>
@@ -87,16 +87,16 @@ function SideNav(props) {
               borderRadius: "2px ",
             }}
           >
-            <ListItemIcon>
-              <BsFillFileEarmarkTextFill />
+            <ListItemIcon sx={{color:navBoeder === "ExpenseSheet"? "var(--primary-color)": "none"}} className="nav-icons" >
+              <BsFillFileEarmarkTextFill style={{fontSize:"25px"}} />
             </ListItemIcon>
-            <ListItemText primary="ExpenseSheet" className="nav-menus" />
+            <ListItemText primary="ExpenseSheet"  />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <BsFileBarGraphFill />
+              <BsFileBarGraphFill style={{fontSize:"25px"}} />
             </ListItemIcon>
             <ListItemText primary="Report" />
           </ListItemButton>

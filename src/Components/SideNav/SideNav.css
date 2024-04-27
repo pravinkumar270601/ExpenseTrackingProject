@@ -8,8 +8,11 @@
     background-color: red !important;
   } */
 
-  .myactive{
-    border-right: 4.9px solid red  !important;
+  
+
+.nav-icons{
+    font-size: 30px !important;
+   
   }
 
   /* .sidenav-div span.css-10hburv-MuiTypography-root{

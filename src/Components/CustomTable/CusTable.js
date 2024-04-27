@@ -60,7 +60,7 @@ const CusTable = () => {
       <Grid
         item
         xs={12}
-        style={{ backgroundColor: "white", height: "232px", width: "100%",padding:"20px", borderRadius: "15px" }}
+        style={{ backgroundColor: "white", height: "232px", width: "100%",padding:"15px", borderRadius: "15px" }}
       >
         <Grid container className="table_search_grid">
           <Grid item xs={4}>
@@ -131,7 +131,7 @@ const CusTable = () => {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Box  style={{marginTop:"12px" }}>
+        <Box  style={{marginTop:"10px" }}>
           <nav className="nav_pagination">
             <ul className="pagination">
               <li className="page-item">
