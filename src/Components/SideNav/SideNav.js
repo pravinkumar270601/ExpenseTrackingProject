@@ -27,6 +27,7 @@ function SideNav(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [currentComponent, setCurrentComponent] = React.useState(<Masters />);
   const [isClosing, setIsClosing] = React.useState(false);
+  const [navBoeder, setNavBorde] = React.useState("");
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -43,7 +44,6 @@ function SideNav(props) {
   //   }
   // };
 
-
   const handleNavigation = (component) => {
     setCurrentComponent(component);
     setMobileOpen(false); // Close the drawer on navigation
@@ -52,22 +52,45 @@ function SideNav(props) {
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
+      <Toolbar />
+
+      {/* <Divider /> */}
       <List>
         <ListItem disablePadding onClick={() => handleNavigation(<Masters />)}>
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => setNavBorde("Masters")}
+            sx={{
+              borderRight:
+                navBoeder === "Masters"
+                  ? "4.9px solid var(--primary-color)"
+                  : "none",
+              borderRadius: "2px ",
+            }}
+          >
             <ListItemIcon>
               <RiVipCrown2Fill />
             </ListItemIcon>
             <ListItemText primary="Masters" />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding onClick={() => handleNavigation(<ExpenseSheet />)}>
-          <ListItemButton>
+        <ListItem
+          disablePadding
+          onClick={() => handleNavigation(<ExpenseSheet />)}
+        >
+          <ListItemButton
+            onClick={() => setNavBorde("ExpenseSheet")}
+            sx={{
+              borderRight:
+                navBoeder === "ExpenseSheet"
+                  ? "4.9px solid var(--primary-color)"
+                  : "none",
+              borderRadius: "2px ",
+            }}
+          >
             <ListItemIcon>
               <BsFillFileEarmarkTextFill />
             </ListItemIcon>
-            <ListItemText primary="ExpenseSheet" />
+            <ListItemText primary="ExpenseSheet" className="nav-menus" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -88,60 +111,57 @@ function SideNav(props) {
 
   return (
     <div className="sidenav-div">
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <Box
+          component="nav"
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          aria-label="mailbox folders"
+        >
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onTransitionEnd={handleDrawerTransitionEnd}
+            onClose={handleDrawerClose}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box
+          component="main"
           sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
+            width: "100%",
+            height: "100vh",
+            padding: "0px",
           }}
         >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
+          {currentComponent}
+        </Box>
       </Box>
-      <Box
-        component="main"
-        sx={{
-           width: "100%",
-          height: "100vh",
-          padding: "0px",
-
-
-        }}
-      >
-        
-        {currentComponent}
-      </Box>
-    </Box>
     </div>
   );
 }

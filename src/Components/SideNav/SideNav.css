@@ -1,3 +1,20 @@
 .sidenav-div .css-19kzrtu{
     padding: 0px;
 }
+
+  /* .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root */
+
+  /* .ListItemButton:active {
+    background-color: red !important;
+  } */
+
+  .myactive{
+    border-right: 4.9px solid red  !important;
+  }
+
+  /* .sidenav-div span.css-10hburv-MuiTypography-root{
+    font-weight: 700 !important;
+  } */
+  /* .nav-menus{
+    color: red !important;
+  } */

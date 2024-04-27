@@ -1,0 +1,15 @@
+
+.master-main-page .MuiTabs-indicator.css-1aquho2-MuiTabs-indicator{
+    background-color: var(--primary-color);
+    height: 4.9px !important;
+    border-radius: 20px !important;
+}
+.master-main-page button.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary[aria-selected="true"] {
+    color: black !important;
+    font-weight: 700;
+  }
+
+  .master-main-page button.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary[aria-selected="false"] {
+    color: rgb(0, 0, 0,.3) !important;
+    font-weight: 700;
+  }

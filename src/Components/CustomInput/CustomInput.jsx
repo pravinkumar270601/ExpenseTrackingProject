@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import "./CustomInput.css";
-import "../ComponentsCss/componet.css"
+import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
 const CustomInput = ({ inputNavigate }) => {
@@ -20,12 +20,16 @@ const CustomInput = ({ inputNavigate }) => {
 
   return (
     <div>
-      <InputLabel htmlFor="movie-name" className="input-heading" sx={{fontSize:"14px",fontWeight:"700"}}>
+      <InputLabel
+        htmlFor="movie-name"
+        className="input-heading"
+        sx={{ fontSize: "14px", fontWeight: "700" }}
+      >
         Movie Name
       </InputLabel>
       <TextField
-       autoComplete='off'
-       type="text"
+        autoComplete="off"
+        type="text"
         id="movie-name"
         placeholder="Enter the movie name"
         variant="outlined"
@@ -35,11 +39,11 @@ const CustomInput = ({ inputNavigate }) => {
         InputProps={{
           sx: {
             height: "37px",
-            borderRadius: "12px", 
-            // width:"90%" 
+            borderRadius: "12px",
+            // width:"90%" ,
           },
         }}
-      />    
+      />
       {/* <Button variant="contained" color="primary" onClick={handleClick}>
         Go to Target Page
       </Button> */}

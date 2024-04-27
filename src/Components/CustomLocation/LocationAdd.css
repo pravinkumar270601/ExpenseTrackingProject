@@ -1,0 +1,22 @@
+.form-control:focus {
+    outline: none; /* Disable default outline */
+    border-color: #0d0d0e; /* Set border color when focused */
+    box-shadow: none; /* Add box shadow when focused */
+  }
+  .small-boxes-container{
+    
+      max-height: 40px;
+      width: 290px; /* Set the maximum height of the container */
+      overflow: auto; /* Enable scrolling when content overflows */
+  }  
+  /* .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    border-radius: 12px;
+    height: 37px;
+  }
+   */
+   /* .css-mhc70k-MuiGrid-root {
+    margin-top: -19px;
+   } */
+   /* .css-mhc70k-MuiGrid-root>.MuiGrid-item {
+    padding-top: 19px;
+} */

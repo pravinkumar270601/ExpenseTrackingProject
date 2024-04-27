@@ -6,6 +6,7 @@ import CusTable from "../Components/CustomTable/CusTable";
 import CustomInput from "../Components/CustomInput/CustomInput";
 import CustomDropdownMui from "../Components/CustomDropDown/CustomDropdown";
 import CustomSubmitButton from "../Components/CustomSubmitBtn/CustomSubmitButton";
+import CustomCancelButton from "../Components/CustomCancelBtn/CustomCancelButton";
 
 const ExpenseSheet = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -46,54 +47,142 @@ const ExpenseSheet = () => {
           </div>
         </Grid>
         {/* input field */}
-        <Grid item md={12} sx={{ height: "43%" }} >
+        <Grid item md={12} sx={{ height: "43%" }}>
           <Container
             style={{
               width: "95%",
               backgroundColor: "white",
-              padding: "10px 20px",
+              padding: "15px 20px 10px",
               borderRadius: "15px",
             }}
-            
           >
-            <Grid container > 
+            <Grid container>
               {/* First Row */}
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "start", alignItems: "center",marginTop:"5px" }}>
-              <CustomDropdownMui options={options} onSelect={handleSelect} />
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  marginTop: "5px",
+                }}
+              >
+                <CustomDropdownMui options={options} onSelect={handleSelect} />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center",marginTop:"5px" }}>
-              <CustomDropdownMui options={options} onSelect={handleSelect} /> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "5px",
+                }}
+              >
+                <CustomDropdownMui options={options} onSelect={handleSelect} />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "end", alignItems: "center",marginTop:"5px" }}>
-              <CustomInput /> 
-              </Grid> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                 
+                  marginTop: "5px",
+                }}
+              >
+                <CustomInput />
+              </Grid>
 
               {/* Second Row */}
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "start", alignItems: "center",marginTop:"10px" }}>
-              <CustomDropdownMui options={options} onSelect={handleSelect} />
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                 
+                  marginTop: "10px",
+                }}
+              >
+                <CustomDropdownMui options={options} onSelect={handleSelect} />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center",marginTop:"10px" }}>
-              <CustomDropdownMui options={options} onSelect={handleSelect} /> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  
+                  marginTop: "10px",
+                }}
+              >
+                <CustomDropdownMui options={options} onSelect={handleSelect} />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "end", alignItems: "center",marginTop:"10px" }}>
-              <CustomDropdownMui options={options} onSelect={handleSelect} />
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                 
+                  marginTop: "10px",
+                }}
+              >
+                <CustomDropdownMui options={options} onSelect={handleSelect} />
               </Grid>
 
               {/* Third Row */}
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "start", alignItems: "center",marginTop:"10px" }}>
-              <CustomInput/> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+            
+                  marginTop: "10px",
+                }}
+              >
+                <CustomInput />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center",marginTop:"10px" }}>
-              <CustomInput/> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                 
+                  marginTop: "10px",
+                }}
+              >
+                <CustomInput />
               </Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "end", alignItems: "center",marginTop:"10px" }}>
-              <CustomInput/> 
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+              
+                  marginTop: "10px",
+                }}
+              >
+                <CustomInput />
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
               <Grid item xs={4}></Grid>
-              <Grid item xs={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center",marginTop:"10px" }}>
-              <CustomSubmitButton/> <button type="button" className="">Primary</button>
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <CustomSubmitButton />{" "}
+                <CustomCancelButton>Cancel</CustomCancelButton>
               </Grid>
             </Grid>
           </Container>
@@ -105,13 +194,12 @@ const ExpenseSheet = () => {
               width: "95%",
               padding: "0px",
               // borderRadius: "10px",
-              marginTop:"5px"
-              
+              marginTop: "5px",
             }}
           >
-            <Grid container >
+            <Grid container>
               <Grid item xs={12}>
-                <CusTable/>
+                <CusTable />
               </Grid>
             </Grid>
           </Container>

@@ -60,7 +60,7 @@ const CusTable = () => {
       <Grid
         item
         xs={12}
-        style={{ backgroundColor: "white", height: "227px", width: "100%",padding:"20px", borderRadius: "15px" }}
+        style={{ backgroundColor: "white", height: "232px", width: "100%",padding:"20px", borderRadius: "15px" }}
       >
         <Grid container className="table_search_grid">
           <Grid item xs={4}>

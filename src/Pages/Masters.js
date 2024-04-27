@@ -10,8 +10,7 @@ import LocationTab from "./MastersTabs/LocationTab";
 import CategoryTab from "./MastersTabs/CategoryTab";
 import SubcategoryTab from "./MastersTabs/SubcategoryTab";
 import CrewTab from "./MastersTabs/CrewTab";
-
-
+import "../Pages/Css/Masters.css";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,7 +49,7 @@ const Masters = () => {
     setValue(newValue);
   };
   return (
-    <div>
+    <div className="master-main-page">
       <Box sx={{ width: " 100%", height: "100vh", background: "#c2cee7" }}>
         <Box sx={{ borderColor: "divider", height: "16%" }}>
           <Grid container md={12} sx={{ height: "55%" }}>
@@ -110,7 +109,7 @@ const Masters = () => {
             <Tab label="Crew" {...a11yProps("Crew")} />
           </Tabs>
         </Box>
-        <Box sx={{ width: " 100%", height: "82%",marginTop:"1%" }}>
+        <Box sx={{ width: " 100%", height: "82%", marginTop: "1%" }}>
           <CustomTabPanel value={value} index={0}>
             <MovieTab />
           </CustomTabPanel>

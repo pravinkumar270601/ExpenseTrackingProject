@@ -3,6 +3,9 @@ import CustomInput from "../../Components/CustomInput/CustomInput";
 import CustomDropdownMui from "../../Components/CustomDropDown/CustomDropdown";
 import { Container, Grid } from "@mui/material";
 import CusTable from "../../Components/CustomTable/CusTable";
+import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitButton";
+import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
+import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 
 const MovieTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -17,10 +20,22 @@ const MovieTab = () => {
     console.log("Selected option id:", id);
     // Do something with the selected option
   };
+  const radionavigateToPage = (page) => {
+    // Perform navigation to the selected page
+    console.log(`Navigating to ${page}`);
+    // Your navigation logic here
+  };
+
+  const options1 = [
+    { label: "Active", value: "Active" },
+    { label: "Inactive", value: "Inactive" },
+    // { label: "Page 3", value: "3" },
+  ];
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <Grid container md={12} sx={{ height: "100%" }}>
-        <Grid item md={12} sx={{ height: "35%" }}>
+        <Grid item md={12} sx={{ height: "37%" }}>
           <Container
             style={{
               width: "95%",
@@ -40,7 +55,7 @@ const MovieTab = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "start",
-                  alignItems: "center",
+                 
                   marginTop: "5px",
                 }}
               >
@@ -51,12 +66,14 @@ const MovieTab = () => {
                 xs={4}
                 sx={{
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  justifyContent: "center",  
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomRadioButton
+                  options1={options1}
+                  radioNavigate={radionavigateToPage}
+                />
               </Grid>
               <Grid
                 item
@@ -64,11 +81,10 @@ const MovieTab = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "end",
-                  alignItems: "center",
                   marginTop: "5px",
                 }}
               >
-                <CustomInput sx={{ width: "100%" }} />
+             
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
@@ -78,23 +94,19 @@ const MovieTab = () => {
                 xs={4}
                 sx={{
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "end",
                   alignItems: "center",
                   marginTop: "10px",
                 }}
               >
-                <button type="button" className="">
-                  Primary
-                </button>{" "}
-                <button type="button" className="">
-                  Primary
-                </button>
+                <CustomSubmitButton />{" "}
+                <CustomCancelButton>Cancel</CustomCancelButton>
               </Grid>
             </Grid>
           </Container>
         </Grid>
 
-        <Grid item md={12} sx={{ height: "65%" }}>
+        <Grid item md={12} sx={{ height: "63%" }}>
           <Container
             style={{
               width: "95%",
