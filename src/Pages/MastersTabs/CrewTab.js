@@ -7,6 +7,7 @@ import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelBut
 import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitButton";
 import CusTable from "../../Components/CustomTable/CusTable";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
+import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
 
 const CrewTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -135,7 +136,7 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomInput />
+                <CustomPhoneNumber/>
               </Grid>
               <Grid
                 item
@@ -179,7 +180,7 @@ const CrewTab = () => {
           </Container>
         </Grid>
 
-        <Grid item md={12} sx={{ height: "52%" }}>
+        <Grid item md={12} sx={{ height: "51%" }}>
           <Container
             style={{
               width: "95%",

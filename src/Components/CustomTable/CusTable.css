@@ -1,14 +1,6 @@
 /* cusTable.css
 -------------- */
 
-.Table_search_input {
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 9px;
-  font-size: 16px;
-  background-color: rgb(255, 255, 255);
-  }
 
 .table_search_form{
   display: flex;
@@ -83,4 +75,37 @@
   }
   .custom-table td,th{
     padding: 5px !important;
+  }
+
+
+  .search-container {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #aaa;
+  }
+  
+  .search-container input[type="text"] {
+    padding-left: 30px; /* Adjust as necessary */
+  }
+  
+.Table_search_input {
+  width:150px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 9px;
+  padding: 5px;
+  font-size: 14px;
+  background-color: #F4F7FE;
+
+  border: none;
+  }
+
+  .Table_search_input::placeholder {
+    color: rgba(0, 0, 0, 0.3); /* Adjust placeholder color */
   }

@@ -1,0 +1,19 @@
+.CustomPhoneNumber .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+    width: 58px !important;
+    padding: 7.8px !important;
+   
+    /* height: 37px !important; */
+}
+.custom-phoneno-field{
+    width: 100% !important;
+    border: 1px solid #ced4da;
+}
+.phone-code-select.css-3g4ugj-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-size: 14px;
+
+    
+}

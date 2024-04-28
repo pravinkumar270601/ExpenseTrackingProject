@@ -69,7 +69,7 @@ function LocationInput() {
   };
 
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} style={{width:"85%"}}>
       {locations.map((location, index) => (
         <Grid
           container
@@ -97,8 +97,9 @@ function LocationInput() {
                 sx: {
                   height: "37px",
                   borderRadius: "12px",
-                  width:"290px"
-                  // width:"90%"
+                  fontSize:"14px",
+                  // width:"290px"
+                  width:"100%"
                 },
               }}
             />
@@ -113,7 +114,9 @@ function LocationInput() {
                   color:"white",
                   height:"37px",
                   width:"40px",
-                  padding:"8.5px"
+                  padding:"8.5px",
+                  
+                  
                 }} />
               
             </Grid>
@@ -154,7 +157,8 @@ function LocationInput() {
                 marginLeft: "5px",
                 color: "#4318FF",
                 marginBottom: "2px",
-                fontSize:"20px"
+                fontSize:"20px",
+                cursor: "pointer",
               }}
             />
           </div>

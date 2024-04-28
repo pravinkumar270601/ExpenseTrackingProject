@@ -8,7 +8,7 @@ import "./CusTable.css";
 // import SearchIcon from '@mui/icons-material/Search';
 import { IoSearch, IoPencil, IoTrash } from "react-icons/io5";
 import { FaAngleDoubleLeft } from "react-icons/fa";
-
+import { RiSearchLine } from 'react-icons/ri';
 import { Height } from "@mui/icons-material";
 import { FaAngleDoubleRight } from "react-icons/fa";
 const CusTable = () => {
@@ -60,7 +60,13 @@ const CusTable = () => {
       <Grid
         item
         xs={12}
-        style={{ backgroundColor: "white", height: "232px", width: "100%",padding:"15px", borderRadius: "15px" }}
+        style={{
+          backgroundColor: "white",
+          height: "232px",
+          width: "100%",
+          padding: "15px",
+          borderRadius: "15px",
+        }}
       >
         <Grid container className="table_search_grid">
           <Grid item xs={4}>
@@ -69,16 +75,23 @@ const CusTable = () => {
             </h3>
           </Grid>
           <Grid item xs={6}></Grid>
-          <Grid item xs={2} mb={1}>
-            {/* <IoSearch /> */}
+          <Grid item xs={2} mb={1} sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                }}>
+            <div className="search-container">
+              <RiSearchLine className="search-icon" />
+              <input type="text" placeholder="Search"  className="Table_search_input" onChange={handleSearchChange}/>
+            </div>
 
-            <input
+            {/* <IoSearch /> */}
+            {/* <input
               type="text"
               name="search"
               placeholder="      Search.."
               className="Table_search_input"
               onChange={handleSearchChange}
-            />
+            /> */}
           </Grid>
         </Grid>
 
@@ -117,10 +130,10 @@ const CusTable = () => {
                     ))}
                     <td>
                       <IoPencil
-                        style={{ marginRight: "10px", color: "#4318FF" }}
+                        style={{ marginRight: "10px", color: "#4318FF",cursor: "pointer", }}
                       />{" "}
                       {/* Edit icon */}
-                      <IoTrash style={{ color: "#4318FF" }} />{" "}
+                      <IoTrash style={{ color: "#4318FF",cursor: "pointer", }} />{" "}
                       {/* Delete icon */}
                     </td>
                   </tr>
@@ -131,7 +144,7 @@ const CusTable = () => {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Box  style={{marginTop:"10px" }}>
+        <Box style={{ marginTop: "10px" }}>
           <nav className="nav_pagination">
             <ul className="pagination">
               <li className="page-item">

@@ -19,7 +19,7 @@ const CustomInput = ({ inputNavigate }) => {
   };
 
   return (
-    <div>
+    <div style={{width:"85%"}}>
       <InputLabel
         htmlFor="movie-name"
         className="input-heading"
@@ -40,6 +40,7 @@ const CustomInput = ({ inputNavigate }) => {
           sx: {
             height: "37px",
             borderRadius: "12px",
+            fontSize:"14px"
             // width:"90%" ,
           },
         }}

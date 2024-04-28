@@ -1,4 +1,12 @@
-import React from "react";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
+import React, { useState } from "react";
+import "./CustomPhoneNumber.css";
 
 const CustomPhoneNumber = () => {
   const countries = [
@@ -14,38 +22,43 @@ const CustomPhoneNumber = () => {
     setCountry(event.target.value);
   };
   return (
-    <div>
-        <InputLabel
-        htmlFor="movie-name"
+    <div style={{ width: "85%" }} className="CustomPhoneNumber">
+      <InputLabel
+        htmlFor="phone"
         className="input-heading"
         sx={{ fontSize: "14px", fontWeight: "700" }}
       >
         Movie Name
       </InputLabel>
       <TextField
-      autoComplete="off"
+        autoComplete="off"
         id="phone"
         placeholder="Phone Number"
         variant="outlined"
         type="number"
-
-        // sx={{width:290}}
-
+        className="custom-phoneno-field"
         InputProps={{
+          sx: {
+            height: "37px",
+            borderRadius: "12px",
+            fontSize:"14px"
+          },
           startAdornment: (
-            <FormControl>
+            <FormControl 
+            
+            >
               {/* <InputLabel id="country-label">Country Code</InputLabel> */}
               <Select
                 labelId="country-label"
                 id="country"
                 value={country}
+                className="phone-code-select"
                 onChange={handleCountryChange}
-                style={{
-                  Width: "40px ",
-                  marginLeft: -14,
-                  fontSize: 20,
-                  padding: -100,
+                sx={{
+                  marginLeft: "-15px",
+                  
                 }}
+                
               >
                 {countries.map((country) => (
                   <MenuItem key={country.code} value={country.code}>
@@ -57,7 +70,6 @@ const CustomPhoneNumber = () => {
             </FormControl>
           ),
         }}
-        style={{ marginTop: 16 }}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitBut
 import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import LocationInput from "../../Components/CustomLocation/LocationAdd";
+import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
 
 const LocationTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -82,7 +83,7 @@ const LocationTab = () => {
                   marginTop: "5px",
                 }}
               >
-             <CustomInput sx={{ width: "100%" }} />
+             <CustomPhoneNumber/>
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>

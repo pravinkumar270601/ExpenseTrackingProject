@@ -18,7 +18,7 @@ const CustomRadioButton = ({ options1, radioNavigate }) => {
   };
 
   return (
-    <div>
+    <div style={{width:"85%"}}>
       <InputLabel sx={{ fontSize: "14px", fontWeight: "700"}} htmlFor="Status">
         Status
       </InputLabel>

@@ -12,7 +12,7 @@ const CustomDropdownMui = ({ options, onSelect }) => {
   };
 
   return (
-    <div>
+    <div style={{width:"85%"}}>
       <InputLabel id="select-label" className="input-heading">
         Movie Name
       </InputLabel>
@@ -23,15 +23,15 @@ const CustomDropdownMui = ({ options, onSelect }) => {
         displayEmpty
         inputProps={{ "aria-label": "Select option" }}
         className="customDropdown-input"
-        sx={{ borderRadius: "12px", height: "37px", width: "290px" }}
+        sx={{ borderRadius: "12px", height: "37px", width: "100%",fontSize:"14px" }}
         
       >
         <MenuItem value="" disabled  >
-          <div style={{ color: 'rgba(0, 0, 0, 0.3)' }}>Select an option</div>
+          <div style={{ color: 'rgba(0, 0, 0, 0.3)',fontSize:"14px" }}>Select an option</div>
         </MenuItem>
 
         {options.map((option) => (
-          <MenuItem key={option.id} value={option.id}>
+          <MenuItem key={option.id} value={option.id} sx={{fontSize:"14px"}}>
             {option.value}
           </MenuItem>
         ))}

@@ -6,6 +6,7 @@ import CusTable from "../../Components/CustomTable/CusTable";
 import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitButton";
 import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
+import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
 
 const MovieTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
