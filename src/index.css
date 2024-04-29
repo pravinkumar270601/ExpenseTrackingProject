@@ -3,8 +3,7 @@
 
 :root {
   --primary-color: #4318FF; /* Define the primary color variable */
-  /* --page-bg-color: #F4F7FE; */
-  --page-bg-color: #c2cee7;
+  --page-bg-color: #F4F7FE;
   --login-bg-color: #E4EBFB;
 
 }

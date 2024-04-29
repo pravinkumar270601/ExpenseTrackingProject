@@ -7,6 +7,7 @@ import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitBut
 import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
+import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const MovieTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -56,24 +57,25 @@ const MovieTab = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "start",
-                 
+
                   marginTop: "5px",
                 }}
               >
-                <CustomInput sx={{ width: "100%" }} />
+                <CustomInput sx={{ width: "100%" }} inputHeading={"Movie Name"} inputPlaceholder={"Enter Movie Name"}/>
               </Grid>
               <Grid
                 item
                 xs={4}
                 sx={{
                   display: "flex",
-                  justifyContent: "center",  
+                  justifyContent: "center",
                   marginTop: "5px",
                 }}
               >
                 <CustomRadioButton
                   options1={options1}
                   radioNavigate={radionavigateToPage}
+                  inputHeading={"Status"}
                 />
               </Grid>
               <Grid
@@ -84,9 +86,7 @@ const MovieTab = () => {
                   justifyContent: "end",
                   marginTop: "5px",
                 }}
-              >
-             
-              </Grid>
+              ></Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
               <Grid item xs={4}></Grid>
@@ -118,7 +118,11 @@ const MovieTab = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={MASTER.MovieTableHeaders}
+                  Tabledata={MASTER.MovieTableVaues}
+                  TableTittle="Movies"
+                />
               </Grid>
             </Grid>
           </Container>

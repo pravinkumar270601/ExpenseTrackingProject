@@ -7,6 +7,7 @@ import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitBut
 import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import LocationInput from "../../Components/CustomLocation/LocationAdd";
+import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const CategoryTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -59,7 +60,7 @@ const CategoryTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Movie Name"} selectplaceholder={"Select Movie"}/>
               </Grid>
               <Grid
                 item
@@ -70,7 +71,7 @@ const CategoryTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <LocationInput />
+                <LocationInput inputHeading={"Category"} locationplaceholder={"Enter Category"}/>
               </Grid>
               <Grid
                 item
@@ -80,9 +81,7 @@ const CategoryTab = () => {
                   justifyContent: "end",
                   marginTop: "5px",
                 }}
-              >
-                
-              </Grid>
+              ></Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
               <Grid item xs={4}></Grid>
@@ -114,7 +113,11 @@ const CategoryTab = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={MASTER.CategoryTableHeaders}
+                  Tabledata={MASTER.CategoryTableVaues}
+                  TableTittle="Category"
+                />
               </Grid>
             </Grid>
           </Container>

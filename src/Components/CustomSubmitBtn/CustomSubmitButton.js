@@ -11,7 +11,7 @@ const CustomSubmitButton = ({ onClick, formData1 }) => {
   return (
     <Button
       variant="contained"
-      sx={{ backgroundColor: "var(--primary-color)",borderRadius:"12px",height:"37px",width:"130px",fontSize:"12px",transform:"capitalize",marginRight:"5px" }}
+      sx={{ backgroundColor: "var(--primary-color)",borderRadius:"12px",height:"37px",width:"130px",fontSize:"12px",marginRight:"5px",textTransform: "none" }}
       onClick={handleSubmit}
     >
       Submit

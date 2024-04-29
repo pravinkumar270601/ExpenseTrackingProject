@@ -1,0 +1,19 @@
+.notification-wrapper {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 315px;
+  z-index: 1000;
+}
+
+.notification-item {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: SlideLeft 0.4s;
+  animation-fill-mode: forwards;
+  width: 315px;
+  padding: 8px;
+}

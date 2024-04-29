@@ -7,6 +7,7 @@ import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitBut
 import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelButton";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import LocationInput from "../../Components/CustomLocation/LocationAdd";
+import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const SubcategoryTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -59,7 +60,7 @@ const SubcategoryTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Movie Name"} selectplaceholder={"Select Movie"}/>
               </Grid>
               <Grid
                 item
@@ -70,7 +71,7 @@ const SubcategoryTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Category"} selectplaceholder={"Select Category"}/>
               </Grid>
               <Grid
                 item
@@ -81,7 +82,7 @@ const SubcategoryTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <LocationInput />
+                <LocationInput inputHeading={"Subcategory"} locationplaceholder={"Enter Subcategory"}/>
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
@@ -114,7 +115,11 @@ const SubcategoryTab = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={MASTER.SubCategoryTableHeaders}
+                  Tabledata={MASTER.SubCategoryTableVaues}
+                  TableTittle="Subcategory"
+                />
               </Grid>
             </Grid>
           </Container>

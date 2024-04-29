@@ -4,7 +4,7 @@ import "./CustomInput.css";
 import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
-const CustomInput = ({ inputNavigate }) => {
+const CustomInput = ({ inputNavigate,inputHeading,inputPlaceholder }) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event) => {
@@ -25,13 +25,13 @@ const CustomInput = ({ inputNavigate }) => {
         className="input-heading"
         sx={{ fontSize: "14px", fontWeight: "700" }}
       >
-        Movie Name
+       {inputHeading?inputHeading : "InputText"}
       </InputLabel>
       <TextField
         autoComplete="off"
         type="text"
         id="movie-name"
-        placeholder="Enter the movie name"
+        placeholder={`${inputPlaceholder?inputPlaceholder:"Enter Input"}`}
         variant="outlined"
         value={value}
         className="custominput-field"

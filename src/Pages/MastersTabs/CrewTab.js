@@ -8,6 +8,7 @@ import CustomSubmitButton from "../../Components/CustomSubmitBtn/CustomSubmitBut
 import CusTable from "../../Components/CustomTable/CusTable";
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
+import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const CrewTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -30,9 +31,9 @@ const CrewTab = () => {
   };
 
   const options1 = [
-    { label: "Active", value: "Active" },
-    { label: "Inactive", value: "Inactive" },
-    // { label: "Page 3", value: "3" },
+    { label: "Male", value: "Male" },
+    { label: "Female", value: "Female" },
+    { label: "Others", value: "Others" },
   ];
 
   return (
@@ -59,7 +60,12 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui
+                  options={options}
+                  onSelect={handleSelect}
+                  inputHeading={"Movie Name"}
+                  selectplaceholder={"Select Movie"}
+                />
               </Grid>
               <Grid
                 item
@@ -70,7 +76,12 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui
+                  options={options}
+                  onSelect={handleSelect}
+                  inputHeading={"Location"}
+                  selectplaceholder={"Select Location"}
+                />
               </Grid>
               <Grid
                 item
@@ -82,7 +93,12 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui
+                  options={options}
+                  onSelect={handleSelect}
+                  inputHeading={"Category"}
+                  selectplaceholder={"Select Category"}
+                />
               </Grid>
 
               {/* Second Row */}
@@ -95,7 +111,12 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui
+                  options={options}
+                  onSelect={handleSelect}
+                  inputHeading={"Subcategory"}
+                  selectplaceholder={"Select Subcategory"}
+                />
               </Grid>
               <Grid
                 item
@@ -107,7 +128,10 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomInput />
+                <CustomInput
+                  inputHeading={"Crew Name"}
+                  inputPlaceholder={"Enter Crew Name"}
+                />
               </Grid>
               <Grid
                 item
@@ -122,6 +146,7 @@ const CrewTab = () => {
                 <CustomRadioButton
                   options1={options1}
                   radioNavigate={radionavigateToPage}
+                  inputHeading={"Gender"}
                 />
               </Grid>
 
@@ -136,7 +161,7 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomPhoneNumber/>
+                <CustomPhoneNumber inputHeading={"Mobile Number"} />
               </Grid>
               <Grid
                 item
@@ -148,7 +173,10 @@ const CrewTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomInput />
+                <CustomInput
+                  inputHeading={"Natioanlity"}
+                  inputPlaceholder={"Enter Natioanlity"}
+                />
               </Grid>
               <Grid
                 item
@@ -191,7 +219,11 @@ const CrewTab = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={MASTER.CrewTableHeaders}
+                  Tabledata={MASTER.CrewTableVaues}
+                  TableTittle="Crew"
+                />
               </Grid>
             </Grid>
           </Container>

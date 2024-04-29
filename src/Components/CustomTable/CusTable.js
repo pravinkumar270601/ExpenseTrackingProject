@@ -8,11 +8,13 @@ import "./CusTable.css";
 // import SearchIcon from '@mui/icons-material/Search';
 import { IoSearch, IoPencil, IoTrash } from "react-icons/io5";
 import { FaAngleDoubleLeft } from "react-icons/fa";
-import { RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine } from "react-icons/ri";
 import { Height } from "@mui/icons-material";
 import { FaAngleDoubleRight } from "react-icons/fa";
-const CusTable = () => {
+const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
   // console.log(MASTER.TableVaues.map((datas)=>{datas.Sno})
+  console.log(TableHeading, "tableHeading...............");
+  console.log(Tabledata, "Tabledatsss...............");
   const recordperpage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,7 +38,7 @@ const CusTable = () => {
     setCurrentPage(1); // Reset to the first page when search query changes
   };
 
-  const filteredRecords = MASTER.TableVaues.filter((record) =>
+  const filteredRecords = Tabledata.filter((record) =>
     Object.values(record).some((value) =>
       value.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -44,7 +46,7 @@ const CusTable = () => {
 
   //   this code is to get object keys
 
-  for (const item of MASTER.TableVaues) {
+  for (const item of Tabledata) {
     const keys = Object.keys(item);
     console.log("Keys:", keys);
   }
@@ -71,17 +73,27 @@ const CusTable = () => {
         <Grid container className="table_search_grid">
           <Grid item xs={4}>
             <h3 className="Table_heading" style={{ fontSize: "16px" }}>
-              Movies
+              {TableTittle}
             </h3>
           </Grid>
           <Grid item xs={6}></Grid>
-          <Grid item xs={2} mb={1} sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                }}>
+          <Grid
+            item
+            xs={2}
+            mb={1}
+            sx={{
+              display: "flex",
+              justifyContent: "end",
+            }}
+          >
             <div className="search-container">
               <RiSearchLine className="search-icon" />
-              <input type="text" placeholder="Search"  className="Table_search_input" onChange={handleSearchChange}/>
+              <input
+                type="text"
+                placeholder="Search"
+                className="Table_search_input"
+                onChange={handleSearchChange}
+              />
             </div>
 
             {/* <IoSearch /> */}
@@ -106,7 +118,7 @@ const CusTable = () => {
               <thead>
                 <tr>
                   {/*in this value is change in click so will pass through via props */}
-                  {MASTER.MovieTableHeaders.map((data) => (
+                  {TableHeading.map((data) => (
                     <th
                       scope="col"
                       className="thead_data"
@@ -130,10 +142,27 @@ const CusTable = () => {
                     ))}
                     <td>
                       <IoPencil
-                        style={{ marginRight: "10px", color: "#4318FF",cursor: "pointer", }}
+                        style={{
+                          marginRight: "10px",
+                          color: "#4318FF",
+                          cursor: "pointer",
+                          backgroundColor: "#F4F7FE",
+                          padding: "3px",
+                          fontSize: "20px",
+                          borderRadius: "7px",
+                        }}
                       />{" "}
                       {/* Edit icon */}
-                      <IoTrash style={{ color: "#4318FF",cursor: "pointer", }} />{" "}
+                      <IoTrash
+                        style={{
+                          color: "#4318FF",
+                          cursor: "pointer",
+                          backgroundColor: "#F4F7FE",
+                          padding: "3px",
+                          fontSize: "20px",
+                          borderRadius: "7px",
+                        }}
+                      />{" "}
                       {/* Delete icon */}
                     </td>
                   </tr>
@@ -145,7 +174,17 @@ const CusTable = () => {
       </Grid>
       <Grid item xs={12}>
         <Box style={{ marginTop: "10px" }}>
-          <nav className="nav_pagination">
+          <nav
+            className="nav_pagination"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <p style={{ color: "rgb(178 183 191 / 92%)",fontSize:"13px",marginLeft:"3%" ,fontWeight:"650"}}>
+              Page {currentPage} out of {npage}
+            </p>
             <ul className="pagination">
               <li className="page-item">
                 <a

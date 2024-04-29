@@ -6,7 +6,7 @@ import "./CustomDropdownMui.css";
 import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
-const CustomDropdownMui = ({ options, onSelect }) => {
+const CustomDropdownMui = ({ options, onSelect ,inputHeading,selectplaceholder}) => {
   const handleChange = (event) => {
     onSelect(event.target.value);
   };
@@ -14,7 +14,7 @@ const CustomDropdownMui = ({ options, onSelect }) => {
   return (
     <div style={{width:"85%"}}>
       <InputLabel id="select-label" className="input-heading">
-        Movie Name
+      {inputHeading?inputHeading : "InputText"}
       </InputLabel>
       <Select
         labelId="select-label"
@@ -27,7 +27,7 @@ const CustomDropdownMui = ({ options, onSelect }) => {
         
       >
         <MenuItem value="" disabled  >
-          <div style={{ color: 'rgba(0, 0, 0, 0.3)',fontSize:"14px" }}>Select an option</div>
+          <div style={{ color: 'rgba(0, 0, 0, 0.3)',fontSize:"14px" }}>{selectplaceholder ? selectplaceholder :"Select dropddown"}</div>
         </MenuItem>
 
         {options.map((option) => (

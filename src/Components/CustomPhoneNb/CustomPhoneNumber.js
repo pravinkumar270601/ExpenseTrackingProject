@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import "./CustomPhoneNumber.css";
 
-const CustomPhoneNumber = () => {
+const CustomPhoneNumber = ({inputHeading}) => {
   const countries = [
     { code: "+91", name: "India" },
     { code: "+1", name: "USA" },
@@ -28,12 +28,12 @@ const CustomPhoneNumber = () => {
         className="input-heading"
         sx={{ fontSize: "14px", fontWeight: "700" }}
       >
-        Movie Name
+        {inputHeading?inputHeading : "InputText"}
       </InputLabel>
       <TextField
         autoComplete="off"
         id="phone"
-        placeholder="Phone Number"
+        placeholder="Enter Mobile Number"
         variant="outlined"
         type="number"
         className="custom-phoneno-field"
@@ -61,7 +61,7 @@ const CustomPhoneNumber = () => {
                 
               >
                 {countries.map((country) => (
-                  <MenuItem key={country.code} value={country.code}>
+                  <MenuItem key={country.code} value={country.code} sx={{ fontSize:"14px"}}>
                     {country.code}
                     {/* ({country.name}) */}
                   </MenuItem>

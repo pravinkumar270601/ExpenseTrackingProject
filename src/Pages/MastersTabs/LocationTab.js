@@ -8,6 +8,7 @@ import CustomCancelButton from "../../Components/CustomCancelBtn/CustomCancelBut
 import CustomRadioButton from "../../Components/CustomRadioBtn/CustomRadioButton";
 import LocationInput from "../../Components/CustomLocation/LocationAdd";
 import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber";
+import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const LocationTab = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -33,7 +34,6 @@ const LocationTab = () => {
     { label: "Inactive", value: "Inactive" },
     // { label: "Page 3", value: "3" },
   ];
-
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -61,18 +61,18 @@ const LocationTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Movie Name"} selectplaceholder={"Select Movie"}/>
               </Grid>
               <Grid
                 item
                 xs={4}
                 sx={{
                   display: "flex",
-                  justifyContent: "center",  
+                  justifyContent: "center",
                   marginTop: "5px",
                 }}
               >
-              <LocationInput/>
+                <LocationInput  inputHeading={"Location"} locationplaceholder={"Enter Location"}/>
               </Grid>
               <Grid
                 item
@@ -83,7 +83,7 @@ const LocationTab = () => {
                   marginTop: "5px",
                 }}
               >
-             <CustomPhoneNumber/>
+                <CustomPhoneNumber  inputHeading={"Mobile Number"}/>
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
@@ -116,7 +116,11 @@ const LocationTab = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={MASTER.LocationTableHeaders}
+                  Tabledata={MASTER.LocationTableVaues}
+                  TableTittle="Location"
+                />
               </Grid>
             </Grid>
           </Container>

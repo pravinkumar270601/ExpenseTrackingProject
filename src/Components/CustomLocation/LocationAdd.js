@@ -12,7 +12,7 @@ import "../ComponentsCss/componet.css";
 import { MdCancel } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 
-function LocationInput() {
+function LocationInput({inputHeading,locationplaceholder}) {
   const [locations, setLocations] = useState([""]);
   const [smallBoxes, setSmallBoxes] = useState([]);
 
@@ -82,13 +82,13 @@ function LocationInput() {
               className="input-heading"
               sx={{ fontSize: "14px", fontWeight: "700" }}
             >
-              Movie Name
+              {inputHeading?inputHeading : "InputText"}
             </InputLabel>
             <TextField
               autoComplete="off"
               type="text"
               id="movie-name"
-              placeholder="Enter the movie name"
+              placeholder={`${locationplaceholder?locationplaceholder:"Enter Adding"}`}
               variant="outlined"
               value={location}
               className="custominput-field"

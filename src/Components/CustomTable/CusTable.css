@@ -40,7 +40,6 @@
   .nav_pagination{
     display: flex;
     justify-content: flex-end;
-    margin-left: 30%;
   }
   .table-borderless{
     font-size: 12px;
@@ -108,4 +107,7 @@
 
   .Table_search_input::placeholder {
     color: rgba(0, 0, 0, 0.3); /* Adjust placeholder color */
+  }
+  .Table_search_input:focus {
+    outline: 1px solid black;
   }

@@ -5,7 +5,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { InputLabel } from "@mui/material";
 
-const CustomRadioButton = ({ options1, radioNavigate }) => {
+const CustomRadioButton = ({ options1, radioNavigate ,inputHeading}) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event) => {
@@ -18,9 +18,9 @@ const CustomRadioButton = ({ options1, radioNavigate }) => {
   };
 
   return (
-    <div style={{width:"85%"}}>
+    <div style={{width:"100%"}}>
       <InputLabel sx={{ fontSize: "14px", fontWeight: "700"}} htmlFor="Status">
-        Status
+      {inputHeading?inputHeading : "InputText"}
       </InputLabel>
       <RadioGroup
         aria-label="page"

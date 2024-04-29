@@ -7,6 +7,8 @@ import CustomInput from "../Components/CustomInput/CustomInput";
 import CustomDropdownMui from "../Components/CustomDropDown/CustomDropdown";
 import CustomSubmitButton from "../Components/CustomSubmitBtn/CustomSubmitButton";
 import CustomCancelButton from "../Components/CustomCancelBtn/CustomCancelButton";
+import * as EXPENSESHEET from "../DataEntries/ExpenseSheet/ExpenseSheetEntries";
+import CustomDateInput from "../Components/CustomDate/CustomDateInput";
 
 const ExpenseSheet = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -21,7 +23,9 @@ const ExpenseSheet = () => {
     console.log("Selected option id:", id);
     // Do something with the selected option
   };
-
+  const handleDateNavigate = (selectedDate) => {
+    console.log("Selected Date:", selectedDate);
+  };
   return (
     <div className="expensesheet-div" style={{ height: "100%", width: "100%" }}>
       <Grid container md={12} sx={{ height: "100%" }}>
@@ -67,7 +71,7 @@ const ExpenseSheet = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Movie Name"} selectplaceholder={"Select Movie"}/>
               </Grid>
               <Grid
                 item
@@ -78,7 +82,7 @@ const ExpenseSheet = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Location"} selectplaceholder={"Select Location"}/>
               </Grid>
               <Grid
                 item
@@ -86,11 +90,12 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "end",
-                 
+
                   marginTop: "5px",
                 }}
               >
-                <CustomInput />
+                
+                <CustomDateInput inputNavigate={handleDateNavigate} SelectInput={"Date"} inputPlaceholder={"Select Date"} />
               </Grid>
 
               {/* Second Row */}
@@ -100,11 +105,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "start",
-                 
+
                   marginTop: "10px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Crew Name"} selectplaceholder={"Select Crew"}/>
               </Grid>
               <Grid
                 item
@@ -112,11 +117,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                  
+
                   marginTop: "10px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Category"} selectplaceholder={"Select Category"}/>
               </Grid>
               <Grid
                 item
@@ -124,11 +129,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "end",
-                 
+
                   marginTop: "10px",
                 }}
               >
-                <CustomDropdownMui options={options} onSelect={handleSelect} />
+                <CustomDropdownMui options={options} onSelect={handleSelect} inputHeading={"Subcategory"} selectplaceholder={"Select Subcategory"}/>
               </Grid>
 
               {/* Third Row */}
@@ -138,11 +143,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "start",
-            
+
                   marginTop: "10px",
                 }}
               >
-                <CustomInput />
+                <CustomInput inputHeading={"Number of Persons"} inputPlaceholder={"Enter Number Persons"}/>
               </Grid>
               <Grid
                 item
@@ -150,11 +155,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                 
+
                   marginTop: "10px",
                 }}
               >
-                <CustomInput />
+                <CustomInput inputHeading={"Advance"} inputPlaceholder={"Enter Advance"}/>
               </Grid>
               <Grid
                 item
@@ -162,11 +167,11 @@ const ExpenseSheet = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "end",
-              
+
                   marginTop: "10px",
                 }}
               >
-                <CustomInput />
+                <CustomInput inputHeading={"Beta"} inputPlaceholder={"Enter Beta"}/>
               </Grid>
               {/* {fourth Row} */}
               <Grid item xs={4}></Grid>
@@ -199,7 +204,11 @@ const ExpenseSheet = () => {
           >
             <Grid container>
               <Grid item xs={12}>
-                <CusTable />
+                <CusTable
+                  TableHeading={EXPENSESHEET.ExpenseSheetTableHeaders}
+                  Tabledata={EXPENSESHEET.ExpenseSheetTableVaues}
+                  TableTittle="Expense"
+                />
               </Grid>
             </Grid>
           </Container>

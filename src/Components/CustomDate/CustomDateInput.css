@@ -1,0 +1,16 @@
+.customdateinput-field {
+    height: 40px !important;
+    width: 100% !important;
+    border-radius: 15px;
+    outline: none; /* Remove outline when focused */
+    border: 1px solid rgb(0, 0, 0,.25); /* Add border style to replace outline */
+    
+  }
+
+  .customdateinput-field:focus {
+    color: rgba(0, 0, 0, 0.2) !important; /* Adjust the color as per your preference */
+  }
+.customdateinput-field{
+    color: rgb(0, 0, 0);
+}
+

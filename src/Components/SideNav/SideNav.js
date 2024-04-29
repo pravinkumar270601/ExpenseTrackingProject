@@ -67,10 +67,24 @@ function SideNav(props) {
               borderRadius: "2px ",
             }}
           >
-            <ListItemIcon sx={{color:navBoeder === "Masters"? "var(--primary-color)": "none"}} >
-              <RiVipCrown2Fill  style={{fontSize:"25px"}} />
+            <ListItemIcon
+              sx={{
+                color:
+                  navBoeder === "Masters" ? "var(--primary-color)" : "none",
+              }}
+            >
+              <RiVipCrown2Fill style={{ fontSize: "25px" }} />
             </ListItemIcon>
-            <ListItemText primary="Masters" />
+            <ListItemText
+              primary="Masters"
+              primaryTypographyProps={{
+                sx: {
+                  color:
+                    navBoeder === "Masters" ? "black" : "rgb(0, 0, 0, .3) ",
+                  fontWeight: "700",
+                },
+              }}
+            />
           </ListItemButton>
         </ListItem>
         <ListItem
@@ -87,18 +101,45 @@ function SideNav(props) {
               borderRadius: "2px ",
             }}
           >
-            <ListItemIcon sx={{color:navBoeder === "ExpenseSheet"? "var(--primary-color)": "none"}} className="nav-icons" >
-              <BsFillFileEarmarkTextFill style={{fontSize:"25px"}} />
+            <ListItemIcon
+              sx={{
+                color:
+                  navBoeder === "ExpenseSheet"
+                    ? "var(--primary-color)"
+                    : "none",
+              }}
+              className="nav-icons"
+            >
+              <BsFillFileEarmarkTextFill style={{ fontSize: "25px" }} />
             </ListItemIcon>
-            <ListItemText primary="ExpenseSheet"  />
+            <ListItemText
+              primary="Expense Sheet"
+              primaryTypographyProps={{
+                sx: {
+                  color:
+                    navBoeder === "ExpenseSheet"
+                      ? "black"
+                      : "rgb(0, 0, 0, .3) ",
+                  fontWeight: "700",
+                },
+              }}
+            />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <BsFileBarGraphFill style={{fontSize:"25px"}} />
+              <BsFileBarGraphFill style={{ fontSize: "25px" }} />
             </ListItemIcon>
-            <ListItemText primary="Report" />
+            <ListItemText
+              primary="Report"
+              primaryTypographyProps={{
+                sx: {
+                  color: navBoeder === "Report" ? "black" : "rgb(0, 0, 0, .3) ",
+                  fontWeight: "700",
+                },
+              }}
+            />
           </ListItemButton>
         </ListItem>
       </List>

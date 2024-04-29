@@ -1,0 +1,572 @@
+export const MovieTableHeaders = [
+    "S.no",
+    "Movie Name",
+    "Staus",
+    "Created Date",
+    "Actions",
+  ];
+  
+  export const LocationTableHeaders = [
+    "S.no",
+    "Movie Name",
+    "Location",
+    "Mobile Number",
+    "Created Date",
+    "Actions",
+  ];
+  export const CategoryTableHeaders = [
+    "S.no",
+    "Movie Name",
+    "Category",
+    "Created Date",
+    "Actions",
+  ];
+  export const SubCategoryTableHeaders = [
+    "S.no",
+    "Movie Name",
+    "Category",
+    "Subcategory",
+    "Created Date",
+    "Actions",
+  ];
+  export const CrewTableHeaders = [
+    "S.no",
+    "Movie Name",
+    "Location",
+    "Category",
+    "Subcategory",
+    "Crew Name",
+    "Gender",
+    "Mobile Number",
+    "Nationality",
+    "Created Date",
+    "Actions",
+  ];
+  
+  export const MovieTableVaues = [
+    {
+      "Sno": "1",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "2",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "3",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "4",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "S.no": "5",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "6",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "7",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "8",
+      "MovieName": "Thalaiva",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "9",
+      "MovieName": "raja",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "10",
+      "MovieName": "Gilli",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "11",
+      "MovieName": "Billa",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "12",
+      "MovieName": "singam",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "13",
+      "MovieName": "Thuppaki",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "14",
+      "MovieName": "manjummal boys",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "15",
+      "MovieName": "Ayan",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "16",
+      "MovieName": "varisu",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "17",
+      "MovieName": "premalu",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "18",
+      "MovieName": "padaiyappa",
+      "Staus": "completed",
+      "CreatedDate": "19-09-2023",
+    },
+  ];
+
+  export const LocationTableVaues = [
+    {
+      "Sno": "1",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "2",
+      "MovieName": "Thalaiva",
+      "Location":"Nungambakkam",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "3",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "4",
+      "MovieName": "Thalaiva",
+      "Location":"Guindy",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "S.no": "5",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "6",
+      "MovieName": "Thalaiva",
+      "Location":"Mumbai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "7",
+      "MovieName": "Thalaiva",
+      "Location":"Kolkatha",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "8",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "9",
+      "MovieName": "raja",
+      "Location":"Pollachi",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "10",
+      "MovieName": "Gilli",
+      "Location":"Kerala",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "11",
+      "MovieName": "Billa",
+      "Location":"Uthangarai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "12",
+      "MovieName": "singam",
+      "Location":"Krishnagiri",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "13",
+      "MovieName": "Thuppaki",
+      "Location":"Mumbai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "14",
+      "MovieName": "manjummal boys",
+      "Location":"Hosur",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "15",
+      "MovieName": "Ayan",
+      "Location":"Coimabthur",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "16",
+      "MovieName": "varisu",
+      "Location":"Kolkatha",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "17",
+      "MovieName": "premalu",
+      "Location":"Mumbai",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "18",
+      "MovieName": "padaiyappa",
+      "Location":"Hosur",
+      "MobileNumber":"1243463527",
+      "CreatedDate": "19-09-2023",
+    },
+  ];
+
+
+  export const CategoryTableVaues = [
+    {
+      "Sno": "1",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "2",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "3",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "4",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "S.no": "5",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "6",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "7",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "8",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+
+  ];
+
+  export const SubCategoryTableVaues = [
+    {
+      "Sno": "1",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "2",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "3",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "4",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "S.no": "5",
+      "MovieName": "Thalaiva",
+      "Cateogory": "hdskdhskdj",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "6",
+      "MovieName": "Thalaiva",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "7",
+      "MovieName": "Thalaiva",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "8",
+      "MovieName": "Thalaiva",
+      "SubCategory": "hdskdhskdj",
+      "CreatedDate": "19-09-2023",
+    },
+
+  ];
+
+
+  export const CrewTableVaues = [
+    {
+      "Sno": "1",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "2",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "3",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+      
+    },
+    {
+      "Sno": "4",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "S.no": "5",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "6",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "7",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "8",
+      "MovieName": "Thalaiva",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "9",
+      "MovieName": "raja",
+      "Location":"Chennai",
+      "Category":"jggjhkjkjk",
+      "SubCategory":"jgjhjhkjkj",
+      "CrewName":"raja",
+      "Gender":"Male",
+      "MobileNumber":"1243463527",
+      "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "10",
+      "MovieName": "Gilli",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "11",
+      "MovieName": "Billa",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "12",
+      "MovieName": "singam",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      "CreatedDate": "19-09-2023",
+    },
+    {
+      "Sno": "13",
+      "MovieName": "Thuppaki",
+      "Location":"Chennai",
+    "Category":"jggjhkjkjk",
+    "SubCategory":"jgjhjhkjkj",
+    "CrewName":"raja",
+    "Gender":"Male",
+    "MobileNumber":"1243463527",
+    "Nationality":"Indian",
+      
+      "CreatedDate": "19-09-2023",
+    },
+    
+  ];
