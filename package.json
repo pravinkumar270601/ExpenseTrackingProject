@@ -1,6 +1,5 @@
 {
   "name": "expensetracker",
-  "homepage":"http://122.165.52.124.:8081/expense_tracking/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
