@@ -34,6 +34,10 @@ function SideNav(props) {
     setMobileOpen(false);
   };
 
+  React.useEffect(()=>{
+    setNavBorde("Masters")
+  },[])
+
   const handleDrawerTransitionEnd = () => {
     setIsClosing(false);
   };

@@ -38,10 +38,12 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
     setCurrentPage(1); // Reset to the first page when search query changes
   };
 
-  const filteredRecords = Tabledata.filter((record) =>
-    Object.values(record).some((value) =>
+  const filteredRecords = Tabledata.filter((record) =>{
+  console.log(record)
+   return Object.values(record).some((value) =>
       value.toLowerCase().includes(searchQuery.toLowerCase())
     )
+  }
   );
 
   //   this code is to get object keys
@@ -182,7 +184,14 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
               alignItems: "center",
             }}
           >
-            <p style={{ color: "rgb(178 183 191 / 92%)",fontSize:"13px",marginLeft:"3%" ,fontWeight:"650"}}>
+            <p
+              style={{
+                color: "rgb(178 183 191 / 92%)",
+                fontSize: "13px",
+                marginLeft: "3%",
+                fontWeight: "650",
+              }}
+            >
               Page {currentPage} out of {npage}
             </p>
             <ul className="pagination">
