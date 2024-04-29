@@ -102,10 +102,12 @@ const Masters = () => {
               sx={{ marginRight: "50px",
               textTransform: "none" }}
             />
+           
             <Tab
               label="Subcategory"
               {...a11yProps("Subcategory")}
               sx={{ marginRight: "50px",textTransform: "none" }}
+              
             />
             <Tab label="Crew" {...a11yProps("Crew")} sx={{textTransform: "none" }} />
           </Tabs>

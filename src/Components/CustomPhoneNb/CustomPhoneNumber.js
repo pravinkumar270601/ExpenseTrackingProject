@@ -55,8 +55,14 @@ const CustomPhoneNumber = ({inputHeading}) => {
                 className="phone-code-select"
                 onChange={handleCountryChange}
                 sx={{
-                  marginLeft: "-15px",
-                  
+                  marginLeft: "-15px",   
+                }}
+                style={{
+                  borderTopLeftRadius: '12px',
+                  borderBottomLeftRadius: '12px',
+                  borderTopRightRadius: '0px',
+                  borderBottomRightRadius: '0px',
+                  fontSize: '14px'
                 }}
                 
               >
