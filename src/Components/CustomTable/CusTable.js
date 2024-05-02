@@ -13,8 +13,8 @@ import { Height } from "@mui/icons-material";
 import { FaAngleDoubleRight } from "react-icons/fa";
 const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
   // console.log(MASTER.TableVaues.map((datas)=>{datas.Sno})
-  console.log(TableHeading, "tableHeading...............");
-  console.log(Tabledata, "Tabledatsss...............");
+  // console.log(TableHeading, "tableHeading...............");
+  // console.log(Tabledata, "Tabledatsss...............");
   const recordperpage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
@@ -38,19 +38,17 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
     setCurrentPage(1); // Reset to the first page when search query changes
   };
 
-  const filteredRecords = Tabledata.filter((record) =>{
-  console.log(record)
-   return Object.values(record).some((value) =>
+  const filteredRecords = Tabledata.filter((record) =>
+    Object.values(record).some((value) =>
       value.toLowerCase().includes(searchQuery.toLowerCase())
     )
-  }
   );
 
   //   this code is to get object keys
 
   for (const item of Tabledata) {
     const keys = Object.keys(item);
-    console.log("Keys:", keys);
+
   }
 
   const lastindex = currentPage * recordperpage;

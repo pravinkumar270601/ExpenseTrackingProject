@@ -4,19 +4,17 @@ import "./CustomInput.css";
 import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
-const CustomInput = ({ inputNavigate,inputHeading,inputPlaceholder }) => {
-  const [value, setValue] = useState("");
-
+const CustomInput = ({ value, customAllSubmit, inputHeading, inputPlaceholder }) => {
   const handleChange = (event) => {
-    setValue(event.target.value);
+    customAllSubmit(event.target.value);
   };
 
-  const handleClick = () => {
-    // Call the callback function passed from the parent to navigate
-    inputNavigate(value);
-    setValue("");
-    console.log("hii", value);
-  };
+  // const handleClick = () => {
+  //   // Call the callback function passed from the parent to navigate
+  //   inputNavigate(value);
+  //   setValue("");
+  //   console.log("hii", value);
+  // };
 
   return (
     <div style={{width:"85%"}}>

@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import "./CustomPhoneNumber.css";
 
-const CustomPhoneNumber = ({inputHeading}) => {
+const CustomPhoneNumber = ({ value, customAllSubmit, inputHeading }) => {
   const countries = [
     { code: "+91", name: "India" },
     { code: "+1", name: "USA" },
@@ -17,10 +17,15 @@ const CustomPhoneNumber = ({inputHeading}) => {
   ];
 
   const [country, setCountry] = useState(); // Default country code
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
+  const handlePhoneNumberChange = (event) => {
+    customAllSubmit(event.target.value); // Pass the phone number value to the parent component
+  };
+
   return (
     <div style={{ width: "85%" }} className="CustomPhoneNumber">
       <InputLabel
@@ -28,7 +33,7 @@ const CustomPhoneNumber = ({inputHeading}) => {
         className="input-heading"
         sx={{ fontSize: "14px", fontWeight: "700" }}
       >
-        {inputHeading?inputHeading : "InputText"}
+        {inputHeading ? inputHeading : "InputText"}
       </InputLabel>
       <TextField
         autoComplete="off"
@@ -36,17 +41,17 @@ const CustomPhoneNumber = ({inputHeading}) => {
         placeholder="Enter Mobile Number"
         variant="outlined"
         type="number"
+        value={value}
         className="custom-phoneno-field"
+        onChange={handlePhoneNumberChange}
         InputProps={{
           sx: {
             height: "37px",
             borderRadius: "12px",
-            fontSize:"14px"
+            fontSize: "14px",
           },
           startAdornment: (
-            <FormControl 
-            
-            >
+            <FormControl>
               {/* <InputLabel id="country-label">Country Code</InputLabel> */}
               <Select
                 labelId="country-label"
@@ -55,19 +60,22 @@ const CustomPhoneNumber = ({inputHeading}) => {
                 className="phone-code-select"
                 onChange={handleCountryChange}
                 sx={{
-                  marginLeft: "-15px",   
+                  marginLeft: "-15px",
                 }}
                 style={{
-                  borderTopLeftRadius: '12px',
-                  borderBottomLeftRadius: '12px',
-                  borderTopRightRadius: '0px',
-                  borderBottomRightRadius: '0px',
-                  fontSize: '14px'
+                  borderTopLeftRadius: "12px",
+                  borderBottomLeftRadius: "12px",
+                  borderTopRightRadius: "0px",
+                  borderBottomRightRadius: "0px",
+                  fontSize: "14px",
                 }}
-                
               >
                 {countries.map((country) => (
-                  <MenuItem key={country.code} value={country.code} sx={{ fontSize:"14px"}}>
+                  <MenuItem
+                    key={country.code}
+                    value={country.code}
+                    sx={{ fontSize: "14px" }}
+                  >
                     {country.code}
                     {/* ({country.name}) */}
                   </MenuItem>

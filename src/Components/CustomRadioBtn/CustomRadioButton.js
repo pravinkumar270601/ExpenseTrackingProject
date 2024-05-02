@@ -5,16 +5,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { InputLabel } from "@mui/material";
 
-const CustomRadioButton = ({ options1, radioNavigate ,inputHeading}) => {
-  const [value, setValue] = useState("");
-
+const CustomRadioButton = ({ selectedValue, customAllSubmit, inputHeading, options1 }) => {
   const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleClick = () => {
-    // Call the onNavigate function passed from the parent to navigate
-    radioNavigate(value);
+    customAllSubmit(event.target.value);
   };
 
   return (
@@ -25,7 +18,7 @@ const CustomRadioButton = ({ options1, radioNavigate ,inputHeading}) => {
       <RadioGroup
         aria-label="page"
         name="page"
-        value={value}
+        value={selectedValue}
         onChange={handleChange}
         style={{ display: "inline" }}
         

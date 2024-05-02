@@ -6,9 +6,9 @@ import "./CustomDropdownMui.css";
 import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
 
-const CustomDropdownMui = ({ options, onSelect ,inputHeading,selectplaceholder}) => {
+const CustomDropdownMui = ({ value, customAllSubmit, inputHeading, selectplaceholder, options }) => {
   const handleChange = (event) => {
-    onSelect(event.target.value);
+    customAllSubmit(event.target.value);
   };
 
   return (

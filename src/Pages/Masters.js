@@ -50,7 +50,8 @@ const Masters = () => {
   };
   return (
     <div className="master-main-page">
-      <Box sx={{ width: " 100%", height: "100vh", background: `var(--page-bg-color)` }}>
+      <Box sx={{ width: " 100%", minHeight: "100vh",
+            maxHeight: "100%", background: `var(--page-bg-color)` }}>
         <Box sx={{ borderColor: "divider", height: "16%" }}>
           <Grid container md={12} sx={{ height: "55%" }}>
             <Grid

@@ -10,6 +10,23 @@ import CustomPhoneNumber from "../../Components/CustomPhoneNb/CustomPhoneNumber"
 import * as MASTER from "../../DataEntries/Master/MasterEntries";
 
 const MovieTab = () => {
+  const [formData, setFormData] = useState({
+    input: "",
+    radio: "",
+  });
+
+  const handleChange = (name, value) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    console.log("Form data:", formData);
+    setFormData({
+    input: "",
+    radio: "",
+    dropdown: ""
+  })
+  };
   const [selectedOption, setSelectedOption] = useState("");
   const options = [
     { id: 1, value: "Option 1" },
@@ -21,11 +38,6 @@ const MovieTab = () => {
     setSelectedOption(id);
     console.log("Selected option id:", id);
     // Do something with the selected option
-  };
-  const radionavigateToPage = (page) => {
-    // Perform navigation to the selected page
-    console.log(`Navigating to ${page}`);
-    // Your navigation logic here
   };
 
   const options1 = [
@@ -61,7 +73,14 @@ const MovieTab = () => {
                   marginTop: "5px",
                 }}
               >
-                <CustomInput sx={{ width: "100%" }} inputHeading={"Movie Name"} inputPlaceholder={"Enter Movie Name"}/>
+                <CustomInput
+                  value={formData.input}
+                  customAllSubmit={(value) => handleChange("input", value)}
+                  inputHeading="Custom Input"
+                  inputPlaceholder="Enter Input"
+                />
+
+                {/* <CustomInput inputNavigate={inputTargetPage} sx={{ width: "100%" }} inputHeading={"Movie Name"} inputPlaceholder={"Enter Movie Name"}/> */}
               </Grid>
               <Grid
                 item
@@ -73,10 +92,16 @@ const MovieTab = () => {
                 }}
               >
                 <CustomRadioButton
+                  selectedValue={formData.radio}
+                  customAllSubmit={(value) => handleChange("radio", value)}
+                  inputHeading="Status"
+                  options1={options1}
+                />
+                {/* <CustomRadioButton
                   options1={options1}
                   radioNavigate={radionavigateToPage}
                   inputHeading={"Status"}
-                />
+                /> */}
               </Grid>
               <Grid
                 item
@@ -100,7 +125,7 @@ const MovieTab = () => {
                   marginTop: "10px",
                 }}
               >
-                <CustomSubmitButton />{" "}
+                <CustomSubmitButton onClick={handleSubmit} />{" "}
                 <CustomCancelButton>Cancel</CustomCancelButton>
               </Grid>
             </Grid>

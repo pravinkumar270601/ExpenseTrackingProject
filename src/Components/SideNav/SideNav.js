@@ -200,7 +200,8 @@ function SideNav(props) {
           component="main"
           sx={{
             width: "100%",
-            height: "100vh",
+            minHeight: "100vh",
+            maxHeight: "100%",
             padding: "0px",
           }}
         >
