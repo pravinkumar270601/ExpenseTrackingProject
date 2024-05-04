@@ -13,3 +13,37 @@ body {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
   }
+
+  /* backgroundColor: "var(--primary-color)",
+  borderRadius: "12px",
+  height: "37px",
+  width: "130px",
+  fontSize: "12px",
+  marginRight: "5px",
+  textTransform: "none", */
+
+
+.expense-submit-btn{
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    height: 33px;
+    width: 130px;
+    font-size: 12px;
+    margin-right: 6px;
+    border: none;
+    color: white;
+    
+  }
+
+  .expense-cancel-btn{
+    background-color: var(#F4F7FE);
+    border-radius: 12px;
+    height: 33px;
+    width: 130px;
+    font-size: 12px;
+    margin-right: 5px;
+    border: none;
+    color: rgb(0, 0, 0);
+
+  }
+

@@ -1,18 +1,17 @@
 .customdateinput-field {
-    height: 40px !important;
-    width: 100% !important;
-    border-radius: 15px;
-    outline: none; /* Remove outline when focused */
-    border: 1px solid rgb(0, 0, 0,.25); /* Add border style to replace outline */
+  height: 37px;
+  width: 100% !important;
+  padding-left: 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none; /* Remove outline when focused */
+  border: 1px solid #ced4da; 
+  /* Add border style to replace outline */
     
   }
 
-  /* .customdateinput-field:focus {
-    color: rgba(0, 0, 0, 0.2) !important;
-  } */
-.customdateinput-field{
-    color: rgb(0, 0, 0);
-}
-/* input[type="date"]{
-  color: tomato;
-} */
+  .CustomDateInput-div  .react-datepicker-wrapper{
+    display: block;
+  }
+
+

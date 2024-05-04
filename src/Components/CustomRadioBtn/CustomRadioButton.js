@@ -1,28 +1,20 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { InputLabel } from "@mui/material";
+import React from "react";
+import { Field, ErrorMessage } from "formik";
+import "./CustomRadioButton.css";
+import "../ComponentsCss/componet.css";
 
-const CustomRadioButton = ({ selectedValue, customAllSubmit, inputHeading, options1 }) => {
-  const handleChange = (event) => {
-    customAllSubmit(event.target.value);
-  };
-
+const CustomRadioButton = ({ label, name, options, ...rest }) => {
   return (
-    <div style={{width:"100%"}}>
-      <InputLabel sx={{ fontSize: "14px", fontWeight: "700"}} htmlFor="Status">
-      {inputHeading?inputHeading : "InputText"}
+    <div style={{ width: "100%" }}>
+      {/* <InputLabel sx={{ fontSize: "14px", fontWeight: "700" }} htmlFor="Status">
+        {inputHeading ? inputHeading : "InputText"}
       </InputLabel>
       <RadioGroup
         aria-label="page"
         name="page"
-        value={selectedValue}
+        value={value}
         onChange={handleChange}
         style={{ display: "inline" }}
-        
-        
       >
         {options1.map((option) => (
           <FormControlLabel
@@ -31,13 +23,27 @@ const CustomRadioButton = ({ selectedValue, customAllSubmit, inputHeading, optio
             control={<Radio color="default" />}
             label={option.label}
             labelPlacement="end" // Aligns the label to the right of the radio button
-            sx={{ "& .MuiFormControlLabel-label": { fontSize: "12.7px",fontWeight:"600"} }}
+            sx={{
+              "& .MuiFormControlLabel-label": {
+                fontSize: "12.7px",
+                fontWeight: "600",
+              },
+            }}
           />
         ))}
-      </RadioGroup>
-      {/* <Button variant="contained" color="primary" onClick={handleClick}>
-        Select One
-      </Button> */}
+      </RadioGroup> */}
+      <label
+      className="input-heading"
+      >{label}</label>
+      <div role="group" aria-labelledby={name} className="cust-radio-div">
+        {options.map((option) => (
+          <label key={option.value} className="radio-label">
+            <Field type="radio" name={name} value={option.value} {...rest} className="radio-input" />
+            {option.label}
+          </label>
+        ))}
+      </div>
+      <ErrorMessage name={name} component="div" />
     </div>
   );
 };

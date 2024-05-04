@@ -1,44 +1,48 @@
-import React, { useState } from "react";
-import { InputLabel, colors } from "@mui/material";
-import './CustomDateInput.css'
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Field, ErrorMessage } from "formik";
+import { FaCalendarAlt } from "react-icons/fa";
+import "./CustomDateInput.css";
+import "../ComponentsCss/componet.css";
 
-const CustomDateInput = ({ inputNavigate ,SelectInput}) => {
-  const [selectedDate, setSelectedDate] = useState("");
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-    // Call the callback function passed from the parent to navigate
-    inputNavigate(event.target.value); // Assuming you want to navigate with the selected date
+const CustomDateInput = ({ label, name, ...rest }) => {
+  const handleIconClick = () => {
+    document.getElementById(name).click();
   };
 
   return (
-    <div style={{ width: "85%" }}>
-      <InputLabel
-        htmlFor="movie-date"
-        className="input-heading"
-        sx={{ fontSize: "14px", fontWeight: "700" }}
-      >
-        {SelectInput}
-      </InputLabel>
-      <input
-        type="date"
-        id="movie-date"
-        value={selectedDate}
-        onChange={handleDateChange}
-        className="customdateinput-field"
-        style={{  paddingLeft: "15px",paddingRight: "10px", }}
-        
-        InputProps={{
-            sx: {
-              height: "37px",
-              borderRadius: "10px",
-              fontSize:"14px",
-            
-              width:"90%" ,
-             
-            
-            },}}
-      />
+    <div style={{ width: "85%" }} className="CustomDateInput-div">
+      <label htmlFor={name}
+      className="input-heading"
+      >{label}</label>
+      <div style={{ position: "relative", width: "100%" }}>
+        <Field name={name} style={{ width: "100%",  }}>
+          {({ field, form }) => (
+            <DatePicker
+              {...field}
+              {...rest}
+              id={name} // Assign id to the date field
+              selected={field.value}
+              className="customdateinput-field"
+              onChange={(date) => form.setFieldValue(field.name, date)}
+              placeholderText={"Select date"} 
+            />
+          )}
+        </Field>
+        <FaCalendarAlt
+          style={{
+            position: "absolute",
+            // right: '10px',
+            cursor: "pointer",
+            right: "18px",
+            top: "50%",
+            transform: "translate(50%, -50%)",
+          }}
+          onClick={handleIconClick} // Handle click event on the calendar icon
+        />
+      </div>
+      <ErrorMessage name={name} component="div" />
     </div>
   );
 };

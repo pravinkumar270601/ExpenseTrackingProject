@@ -37,18 +37,24 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1); // Reset to the first page when search query changes
   };
+  // console.log(searchQuery,"searchQuery_-----____---___-__-_-_--_")
 
-  const filteredRecords = Tabledata.filter((record) =>
-    Object.values(record).some((value) =>
-      value.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+  const filteredRecords = Tabledata.filter((record) =>{
+  // console.log(record,"record?????????????????????")
+   return Object.values(record).some((value) =>{
+      if (typeof value === 'string') {
+    return value.toLowerCase().includes(searchQuery.toLowerCase());
+  }
+  return false; }
+   )
+  }
   );
 
   //   this code is to get object keys
 
   for (const item of Tabledata) {
     const keys = Object.keys(item);
-
+    // console.log("Keys:", keys);
   }
 
   const lastindex = currentPage * recordperpage;
@@ -56,6 +62,7 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
   const records = filteredRecords.slice(fisrtindex, lastindex);
   const npage = Math.ceil(filteredRecords.length / recordperpage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
+  // console.log(records,"records-----------------")
 
   return (
     <Grid container xs={12} sx={{ width: "100%" }}>

@@ -5,15 +5,12 @@ import Select from "@mui/material/Select";
 import "./CustomDropdownMui.css";
 import "../ComponentsCss/componet.css";
 import { InputLabel } from "@mui/material";
+import { Field, ErrorMessage } from "formik";
 
-const CustomDropdownMui = ({ value, customAllSubmit, inputHeading, selectplaceholder, options }) => {
-  const handleChange = (event) => {
-    customAllSubmit(event.target.value);
-  };
-
+const CustomDropdownMui = ({ label, name, options, custPlaceholder, ...rest }) => {
   return (
-    <div style={{width:"85%"}}>
-      <InputLabel id="select-label" className="input-heading">
+    <div style={{ width: "85%" }}>
+      {/* <InputLabel id="select-label" className="input-heading">
       {inputHeading?inputHeading : "InputText"}
       </InputLabel>
       <Select
@@ -35,7 +32,25 @@ const CustomDropdownMui = ({ value, customAllSubmit, inputHeading, selectplaceho
             {option.value}
           </MenuItem>
         ))}
-      </Select>
+      </Select> */}
+
+      <div>
+        <label htmlFor={name} className="input-heading">{label}</label>
+      </div>
+      <Field as="select" id={name} name={name} {...rest} className="customDropdown-input">
+        {custPlaceholder && (
+          <option value="" disabled className="customDropdown-disabled-option">
+            {custPlaceholder ? custPlaceholder :"Select dropddown"}
+          </option>
+
+        )}
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Field>
+      <ErrorMessage name={name} component="div" />
     </div>
   );
 };

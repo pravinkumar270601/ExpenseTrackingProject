@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
 import "./CustomInput.css";
 import "../ComponentsCss/componet.css";
-import { InputLabel } from "@mui/material";
+import { Field, ErrorMessage } from "formik";
 
-const CustomInput = ({ value, customAllSubmit, inputHeading, inputPlaceholder }) => {
-  const handleChange = (event) => {
-    customAllSubmit(event.target.value);
-  };
-
-  // const handleClick = () => {
-  //   // Call the callback function passed from the parent to navigate
-  //   inputNavigate(value);
-  //   setValue("");
-  //   console.log("hii", value);
-  // };
-
+const CustomInput = ({ label, name,custPlaceholder, ...rest }) => {
   return (
-    <div style={{width:"85%"}}>
-      <InputLabel
+    <div style={{ width: "85%" }}>
+      {/* <InputLabel
         htmlFor="movie-name"
         className="input-heading"
         sx={{ fontSize: "14px", fontWeight: "700" }}
@@ -42,10 +30,29 @@ const CustomInput = ({ value, customAllSubmit, inputHeading, inputPlaceholder })
             // width:"90%" ,
           },
         }}
-      />
-      {/* <Button variant="contained" color="primary" onClick={handleClick}>
-        Go to Target Page
-      </Button> */}
+      /> */}
+
+      <div style={{ width: "100%" }}>
+        <div>
+          <label
+            htmlFor={name}
+            className="input-heading"
+            style={{ fontSize: "14px", fontWeight: "700" }}
+          >
+            {label}
+          </label>
+        </div>
+        <Field
+          id={name}
+          name={name}
+          type="text"
+          placeholder={`${custPlaceholder?custPlaceholder:"Enter Input"}`}
+          {...rest}
+          className='custominput-field'
+         
+        />
+        <ErrorMessage name={name} component="div" />
+      </div>
     </div>
   );
 };

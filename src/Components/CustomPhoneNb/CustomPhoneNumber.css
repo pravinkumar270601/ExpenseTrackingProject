@@ -1,22 +1,23 @@
-/* .CustomPhoneNumber .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
-    width: 58px !important;
-    padding: 7.8px !important;
-   
-} */
-#country{
-    width: 58px !important;
-    padding: 7.8px !important;
-    
-}
 
 .custom-phoneno-field{
-    width: 100% !important;
-    border: 1px solid #ced4da;
+    height: 37px;
+  width: 80% ;
+  padding-left: 8px;
+  font-size: 14px;
+  outline: none; /* Remove outline when focused */
+  border: 1px solid #ced4da;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
-/* .phone-code-select.css-3g4ugj-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
-    border-top-left-radius: 12px !important;
-    border-bottom-left-radius: 12px !important;
-    border-top-right-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
+.custom-country-field{
+    height: 37px;
+    width: 20% ;
+    padding-left: 8px;
     font-size: 14px;
-} */
+    outline: none; /* Remove outline when focused */
+    border: 1px solid #ced4da;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+
+}
+
