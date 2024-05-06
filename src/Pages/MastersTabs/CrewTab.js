@@ -83,7 +83,7 @@ const CrewTab = () => {
     const tempArr1 = [];
     CrewTableGetAll?.data?.map((data, index) => {
       return tempArr1.push({
-        // id: data?.company_id
+        id: data?.crew_id,
         Sno: index + 1,
         MovieName: data.movie_name,
         location: data.location,

@@ -81,7 +81,7 @@ const ExpenseSheet = () => {
     const tempArr1 = [];
     ExpenseSheetTable?.data?.map((data, index) => {
       return tempArr1.push({
-        // id: data?.company_id
+        id: data?.expense_id,
         Sno: index + 1,
         MovieName: data.movie_name,
         location: data.location,

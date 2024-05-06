@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import { Container, Grid } from "@mui/material";
 import CusTable from "../../Components/CustomTable/CusTable";
@@ -9,42 +9,75 @@ import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 
 const MovieTab = () => {
+  const [changebtn, setchangebtn] = useState(true);
   const dispatch = useDispatch();
+  const formikRef = useRef();
 
-  const { MovieCreate } = useSelector(
-    (state) => state?.MovieCreate
-  );
+  const { MovieCreate } = useSelector((state) => state?.MovieCreate);
+  const { MovieUpdate } = useSelector((state) => state?.MovieUpdate);
 
-  // console.log(MovieCreate,"MovieCreateMovieCreateMovieCreate")
+  const { MovieGetById } = useSelector((state) => state?.MovieGetById);
+
+  console.log(MovieGetById);
+
+  // console.log(MovieUpdate, "MovieCreateMovieCreateMovieCreate");
+
+  console.log(MovieCreate,"MovieCreateMovieCreateMovieCreate")
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // Handle form submission
-    console.log(values)
-    
+    console.log(values);
+    if (changebtn === true) {
       const data1 = {
-        data: values,
+        data: { ...values, created_on: "2024-04-30" },
         method: "post",
         apiName: "createMovie",
       };
-     
-    dispatch(actions.MOVIECREATE(data1));
-    const data = { data: {}, method: "get", apiName: "getmovieDetails" };
+
+      dispatch(actions.MOVIECREATE(data1));
+    }
+    // updating fuction for data
+
+    if (changebtn === false) {
+      const data2 = {
+        data: { ...values },
+        method: "put",
+        apiName: `updateMovie/${MovieGetById.data.movie_id}`,
+      };
+
+      dispatch(actions.MOVIECREATE(data2));
+      setchangebtn(true)
+    }
+
     // console.log("Dispatching MOVIESTABLEGETALL action:", data);
+    const data = { data: {}, method: "get", apiName: "getmovieDetails" };
     dispatch(actions.MOVIESTABLEGETALL(data));
 
     // Reset the form
     resetForm();
     setSubmitting(false);
-
   };
   // Function to set default field values
-  const setDefaultFieldValues = (setFieldValue) => {
-    setFieldValue("movie_name", "John");
-    setFieldValue("active_status", "1");
+
+  const setmyDefaultFieldValues = (id) => {
+    console.log(id, "edit id");
+    const data = { data: {}, method: "get", apiName: `getmovieById/${id}` };
+    dispatch(actions.MOVIEGetById(data));
+    const { setFieldValue } = formikRef.current;
+      if (setFieldValue) {
+        setFieldValue("movie_name", MovieGetById.data.movie_name);
+        setFieldValue("active_status", `${MovieGetById.data.active_status}`);
+      }
+    setchangebtn(false);
   };
+
+  // useEffect(() => {
+  //   if (MovieGetById.data) {
+      
+  //   }
+  // }, [MovieGetById.data.movie_id]);
 
   // --------------------------------------------
 
- 
   const { MoviesTableGetAll } = useSelector(
     (state) => state?.MoviesTableGetAll
   );
@@ -90,7 +123,7 @@ const MovieTab = () => {
         currentDate.getMonth()
       )} ${currentDate.getFullYear()}`;
       return tempArr.push({
-        // id: data?.company_id
+        id: data?.movie_id,
         Sno: index + 1,
         MovieName: data.movie_name,
         Staus: data.active_status === 1 ? "Active" : "Inactive",
@@ -98,9 +131,30 @@ const MovieTab = () => {
       });
     });
     setRowTableData2(tempArr);
-  }, [MoviesTableGetAll,dispatch]);
+  }, [MoviesTableGetAll, dispatch, MoviesTableGetAll.data]);
 
-  // console.log(rowTableData2, "rowTableData2................................");
+  // // console.log(rowTableData2, "rowTableData2................................");
+
+  // const[MovieDeleteId,setMovieDeleteId] = useState('')
+  // const {MovieDelete}=useSelector(
+  //   (state)=>state?.MovieDelete
+  // );
+  // console.log(MovieDeleteId,'wwwwwww')
+
+  // useEffect(() => {
+  //   if (MovieDeleteId !== null) {
+  //     const data = {
+  //       data: {},
+  //       method: "DELETE",
+  //       apiName: `deleteMovie/${MovieDeleteId}`,
+  //     };
+  //     dispatch(actions.MOVIEDELETE(data));
+  //   }
+  // }, []);
+
+  // const handleDeleteIdChange = (id) => {
+  //   setMovieDeleteId(id);
+  // }
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -112,8 +166,9 @@ const MovieTab = () => {
               active_status: "",
             }}
             onSubmit={handleSubmit}
+            innerRef={formikRef}
           >
-            {({ isSubmitting, resetForm, setFieldValue }) => (
+            {({ isSubmitting, resetForm }) => (
               <Form>
                 <Container
                   style={{
@@ -184,7 +239,7 @@ const MovieTab = () => {
                         marginTop: "10px",
                       }}
                     >
-                      {true ? (
+                      {changebtn ? (
                         <button
                           type="submit"
                           disabled={isSubmitting}
@@ -194,8 +249,9 @@ const MovieTab = () => {
                         </button>
                       ) : (
                         <button
-                          type="button"
-                          onClick={() => setDefaultFieldValues(setFieldValue)}
+                          type="submit"
+                          disabled={isSubmitting}
+                          // onClick={() => setDefaultFieldValues(setFieldValue)}
                           className="expense-submit-btn"
                         >
                           Update
@@ -230,6 +286,8 @@ const MovieTab = () => {
                   TableHeading={MASTER.MovieTableHeaders}
                   Tabledata={rowTableData2}
                   TableTittle="Movies"
+                  setmyDefaultFieldValues={setmyDefaultFieldValues}
+                  // handleDeleteIdChange={handleDeleteIdChange}
                 />
               </Grid>
             </Grid>

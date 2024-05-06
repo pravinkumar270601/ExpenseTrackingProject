@@ -7,8 +7,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CatagoryDelete/CatagoryDelete",
+const CREWDELETE = createAsyncThunk(
+  "CrewDelete/CrewDelete",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CatagoryDeleteSlice = createSlice({
-  name: "CatagoryDeleteSlice",
+const CrewDeleteSlice = createSlice({
+  name: "CrewDeleteSlice",
   initialState: {
-    CatagoryDelete: {
+    CrewDelete: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CatagoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(CREWDELETE.fulfilled, (state, action) => {
+      state.CrewDelete = {
+        ...state.CrewDelete,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(CREWDELETE.pending, (state, action) => {
+      state.CrewDelete = {
+        ...state.CrewDelete,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(CREWDELETE.rejected, (state, action) => {
+      state.CrewDelete = {
+        ...state.CrewDelete,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CatagoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const CrewDeleteAction = {
+    CREWDELETE,
 };
 
-export { CategoryDeleteAction };
-export default CatagoryDeleteSlice.reducer;
+export { CrewDeleteAction };
+export default CrewDeleteSlice.reducer;

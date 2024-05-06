@@ -98,7 +98,7 @@ const CategoryTab = () => {
 
     CategoryTableGetAll?.data?.map((data, index) => {
       return tempArr1.push({
-        // id: data?.company_id
+        id: data?.category_id,
         Sno: index + 1,
         MovieName: data.movie_name,
         Category: data.category_name,
@@ -109,6 +109,7 @@ const CategoryTab = () => {
     setRowTableData(tempArr1);
   }, [CategoryTableGetAll]);
 
+  
   
 
   return (

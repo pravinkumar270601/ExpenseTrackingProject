@@ -7,8 +7,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CatagoryDelete/CatagoryDelete",
+const SUBCATEGORYUPDATE = createAsyncThunk(
+  "SubCatagoryUpdate/SubCatagoryUpdate",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CatagoryDeleteSlice = createSlice({
-  name: "CatagoryDeleteSlice",
+const SubCatagoryUpdateSlice = createSlice({
+  name: "SubCatagoryUpdateSlice",
   initialState: {
-    CatagoryDelete: {
+    SubCatagoryUpdate: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CatagoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(SUBCATEGORYUPDATE.fulfilled, (state, action) => {
+      state.SubCatagoryUpdate = {
+        ...state.SubCatagoryUpdate,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(SUBCATEGORYUPDATE.pending, (state, action) => {
+      state.SubCatagoryUpdate = {
+        ...state.SubCatagoryUpdate,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(SUBCATEGORYUPDATE.rejected, (state, action) => {
+      state.SubCatagoryUpdate = {
+        ...state.SubCatagoryUpdate,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CatagoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const SubCategoryUpdateAction = {
+    SUBCATEGORYUPDATE,
 };
 
-export { CategoryDeleteAction };
-export default CatagoryDeleteSlice.reducer;
+export { SubCategoryUpdateAction };
+export default SubCatagoryUpdateSlice.reducer;

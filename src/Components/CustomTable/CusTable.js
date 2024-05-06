@@ -11,7 +11,12 @@ import { FaAngleDoubleLeft } from "react-icons/fa";
 import { RiSearchLine } from "react-icons/ri";
 import { Height } from "@mui/icons-material";
 import { FaAngleDoubleRight } from "react-icons/fa";
-const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
+import actions from "../../ReduxStore/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
+const CusTable = ({ TableHeading, Tabledata, TableTittle,setmyDefaultFieldValues }) => {
   // console.log(MASTER.TableVaues.map((datas)=>{datas.Sno})
   // console.log(TableHeading, "tableHeading...............");
   // console.log(Tabledata, "Tabledatsss...............");
@@ -63,6 +68,29 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
   const npage = Math.ceil(filteredRecords.length / recordperpage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
   // console.log(records,"records-----------------")
+
+
+
+  const dispatch = useDispatch();
+
+  // const[MovieDeleteId,setMovieDeleteId] = useState('')
+  const {MovieDelete}=useSelector(
+    (state)=>state?.MovieDelete
+  );
+  // console.log(MovieDelete,'delete api')
+   
+
+  const handleDelete=(id)=>{
+    // console.log(id,"idididididididididi");
+    // if (MovieDeleteId !== null) {
+      const data = {
+        data: {},
+        method: "DELETE",
+        apiName: `deleteMovie/${id}`,
+      };
+      dispatch(actions.MOVIEDELETE(data));
+  
+  }
 
   return (
     <Grid container xs={12} sx={{ width: "100%" }}>
@@ -140,15 +168,16 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
                 </tr>
               </thead>
               <tbody>
-                {records.map((datas, i) => (
+              {records.map((datas, i) => (
                   <tr key={i}>
-                    {Object.keys(datas).map((key) => (
+                    {Object.keys(datas).map((key) => (  key !=="id" &&
                       <td key={key} style={{ fontWeight: "700" }}>
                         {datas[key]}
                       </td>
                     ))}
                     <td>
                       <IoPencil
+                      onClick={()=>setmyDefaultFieldValues(datas.id)}
                         style={{
                           marginRight: "10px",
                           color: "#4318FF",
@@ -160,7 +189,7 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle }) => {
                         }}
                       />{" "}
                       {/* Edit icon */}
-                      <IoTrash
+                      <IoTrash  onClick={()=>{handleDelete(datas.id)}}
                         style={{
                           color: "#4318FF",
                           cursor: "pointer",

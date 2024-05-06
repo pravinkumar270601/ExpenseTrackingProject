@@ -97,7 +97,7 @@ const SubcategoryTab = () => {
     const tempArr1 = [];
     SubCategoryTable?.data?.map((data, index) => {
       return tempArr1.push({
-        // id: data?.company_id
+        id: data?.sub_category_id,
         Sno: index + 1,
         MovieName: data.movie_name,
         Category: data.category_name,

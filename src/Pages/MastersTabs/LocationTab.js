@@ -116,7 +116,7 @@ const LocationTab = () => {
     if (LocationTableGetAll && LocationTableGetAll.data) {
       LocationTableGetAll?.data?.map((data, index) => {
         return tempArr1.push({
-          // id: data?.company_id
+          // id: data?.company_id,
           Sno: index + 1,
           MovieName: data.movie_name,
           Location: data.location,

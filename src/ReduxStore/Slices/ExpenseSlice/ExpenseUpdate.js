@@ -4,11 +4,11 @@
 /* eslint-disable no-unused-expressions */
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { defaultReject, defaultState } from "../../../../constants";
+import { defaultReject, defaultState } from "../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CatagoryDelete/CatagoryDelete",
+const EXPENSEUPDATE = createAsyncThunk(
+  "ExpenseUpdate/ExpenseUpdate",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CatagoryDeleteSlice = createSlice({
-  name: "CatagoryDeleteSlice",
+const ExpenseUpdateSlice = createSlice({
+  name: "ExpenseUpdateSlice",
   initialState: {
-    CatagoryDelete: {
+    ExpenseUpdate: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CatagoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(EXPENSEUPDATE.fulfilled, (state, action) => {
+      state.ExpenseUpdate = {
+        ...state.ExpenseUpdate,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(EXPENSEUPDATE.pending, (state, action) => {
+      state.ExpenseUpdate = {
+        ...state.ExpenseUpdate,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(EXPENSEUPDATE.rejected, (state, action) => {
+      state.ExpenseUpdate = {
+        ...state.ExpenseUpdate,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CatagoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const ExpenseUpdateAction = {
+    EXPENSEUPDATE,
 };
 
-export { CategoryDeleteAction };
-export default CatagoryDeleteSlice.reducer;
+export { ExpenseUpdateAction };
+export default ExpenseUpdateSlice.reducer;

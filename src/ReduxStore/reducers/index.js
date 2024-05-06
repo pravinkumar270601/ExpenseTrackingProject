@@ -17,6 +17,19 @@ import  CrewCreateSlice from '../Slices/MasterSlice/CrewSlice/CrewCreate';
 import  SubCategoryCreateSlice from '../Slices/MasterSlice/SubCategorySlice/SubCategoryCreate';
 import  ExpenseCreateSlice from '../Slices/ExpenseSlice/ExpenseCreate';
 import  MovieCreateSlice from '../Slices/MasterSlice/MovieSlice/MovieCreate';
+import ExpenseDeleteSlice from '../Slices/ExpenseSlice/ExpenseDelete';
+import  MovieDeleteSlice from '../Slices/MasterSlice/MovieSlice/MovieDelete';
+import CategoryDeleteSlice from '../Slices/MasterSlice/CategorySlice/CategoryDelete';
+import SubCatagoryDeleteSlice from '../Slices/MasterSlice/SubCategorySlice/SubCatagoryDelete';
+import LocationDeleteSlice from '../Slices/MasterSlice/LocationSlice/LocationDelete';
+import CrewDeleteSlice from '../Slices/MasterSlice/CrewSlice/CrewDelete';
+import ExpenseUpdateSlice from '../Slices/ExpenseSlice/ExpenseUpdate';
+import MovieUpdateSlice from '../Slices/MasterSlice/MovieSlice/MovieUpdate';
+import CategoryUpdateSlice from '../Slices/MasterSlice/CategorySlice/CategoryUpdate';
+import SubCategoryUpdateSlice from '../Slices/MasterSlice/SubCategorySlice/SubCategoryUpdate';
+import LocationUpdateSlice from '../Slices/MasterSlice/LocationSlice/LocationUpdate';
+import CrewUpdateSlice from '../Slices/MasterSlice/CrewSlice/CrewUpdate';
+import MovieGetByIdSlice from '../Slices/MasterSlice/MovieSlice/MovieGetById';
 
 
 const reducer = combineReducers({
@@ -39,6 +52,21 @@ const reducer = combineReducers({
   SubCategoryCreate:SubCategoryCreateSlice,
   ExpenseCreate:ExpenseCreateSlice,
   MovieCreate:MovieCreateSlice,
+  ExpenseDelete:ExpenseDeleteSlice,
+  MovieDelete:MovieDeleteSlice,
+  CategoryDelete:CategoryDeleteSlice,
+  SubCatagoryDelete:SubCatagoryDeleteSlice,
+  LocationDelete:LocationDeleteSlice,
+  CrewDelete:CrewDeleteSlice,
+  ExpenseUpdate:ExpenseUpdateSlice,
+  MovieUpdate:MovieUpdateSlice,
+  CategoryUpdate:CategoryUpdateSlice,
+  SubCategoryUpdate:SubCategoryUpdateSlice,
+  LocationUpdate:LocationUpdateSlice,
+  CrewUpdate:CrewUpdateSlice,
+  MovieGetById:MovieGetByIdSlice,
+
+
 
 });
 

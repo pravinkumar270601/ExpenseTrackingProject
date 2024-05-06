@@ -7,8 +7,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CatagoryDelete/CatagoryDelete",
+const LOCATIONUPDATE = createAsyncThunk(
+  "LocationUpdate/LocationUpdate",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CatagoryDeleteSlice = createSlice({
-  name: "CatagoryDeleteSlice",
+const LocationUpdateSlice = createSlice({
+  name: "LocationUpdateSlice",
   initialState: {
-    CatagoryDelete: {
+    LocationUpdate: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CatagoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(LOCATIONUPDATE.fulfilled, (state, action) => {
+      state.LocationUpdate = {
+        ...state.LocationUpdate,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(LOCATIONUPDATE.pending, (state, action) => {
+      state.LocationUpdate = {
+        ...state.LocationUpdate,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CatagoryDelete = {
-        ...state.CatagoryDelete,
+    builder.addCase(LOCATIONUPDATE.rejected, (state, action) => {
+      state.LocationUpdate = {
+        ...state.LocationUpdate,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CatagoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const LocationUpdateAction = {
+    LOCATIONUPDATE,
 };
 
-export { CategoryDeleteAction };
-export default CatagoryDeleteSlice.reducer;
+export { LocationUpdateAction };
+export default LocationUpdateSlice.reducer;
