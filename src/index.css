@@ -1,49 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-
 :root {
-  --primary-color: #4318FF; /* Define the primary color variable */
-  --page-bg-color: #F4F7FE;
-  --login-bg-color: #E4EBFB;
-
+  --primary-color: #4318ff; /* Define the primary color variable */
+  --page-bg-color: #E4EBFB;
+  --login-bg-color: #e4ebfb;
 }
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-
-  /* backgroundColor: "var(--primary-color)",
-  borderRadius: "12px",
-  height: "37px",
-  width: "130px",
-  fontSize: "12px",
-  marginRight: "5px",
-  textTransform: "none", */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
 
-.expense-submit-btn{
-    background-color: var(--primary-color);
-    border-radius: 12px;
-    height: 33px;
-    width: 130px;
-    font-size: 12px;
-    margin-right: 6px;
-    border: none;
-    color: white;
-    
-  }
+.expense-submit-btn {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  height: 33px;
+  width: 130px;
+  font-size: 12px;
+  margin-right: 6px;
+  border: none;
+  color: white;
+}
 
-  .expense-cancel-btn{
-    background-color: var(#F4F7FE);
-    border-radius: 12px;
-    height: 33px;
-    width: 130px;
-    font-size: 12px;
-    margin-right: 5px;
-    border: none;
-    color: rgb(0, 0, 0);
-
-  }
-
+.expense-cancel-btn {
+  background-color: var(#f4f7fe);
+  border-radius: 12px;
+  height: 33px;
+  width: 130px;
+  font-size: 12px;
+  margin-right: 5px;
+  border: none;
+  color: rgb(0, 0, 0);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.inputs-error-msg{
+  color: red;
+  font-size: 12px;
+}

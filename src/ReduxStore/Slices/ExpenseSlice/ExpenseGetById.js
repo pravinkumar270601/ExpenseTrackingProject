@@ -4,11 +4,11 @@
 /* eslint-disable no-unused-expressions */
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { defaultReject, defaultState } from "../../../../constants";
+import { defaultReject, defaultState } from "../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CategoryDelete/CategoryDelete",
+const EXPENSEGETBYID = createAsyncThunk(
+  "ExpenseGetById/ExpenseGetById",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CategoryDeleteSlice = createSlice({
-  name: "CategoryDeleteSlice",
+const ExpenseGetByIdSlice = createSlice({
+  name: "ExpenseGetByIdSlice",
   initialState: {
-    CategoryDelete: {
+    ExpenseGetById: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CategoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(EXPENSEGETBYID.fulfilled, (state, action) => {
+      state.ExpenseGetById = {
+        ...state.ExpenseGetById,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(EXPENSEGETBYID.pending, (state, action) => {
+      state.ExpenseGetById = {
+        ...state.ExpenseGetById,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(EXPENSEGETBYID.rejected, (state, action) => {
+      state.ExpenseGetById = {
+        ...state.ExpenseGetById,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CategoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const ExpenseGetByIdAction = {
+    EXPENSEGETBYID,
 };
 
-export { CategoryDeleteAction };
-export default CategoryDeleteSlice.reducer;
+export { ExpenseGetByIdAction };
+export default ExpenseGetByIdSlice.reducer;

@@ -30,7 +30,11 @@ import { SubCategoryUpdateAction } from "../Slices/MasterSlice/SubCategorySlice/
 import { CrewUpdateAction } from "../Slices/MasterSlice/CrewSlice/CrewUpdate";
 import { LocationUpdateAction } from "../Slices/MasterSlice/LocationSlice/LocationUpdate";
 import { MovieGetByIdAction } from "../Slices/MasterSlice/MovieSlice/MovieGetById";
-
+import { LoactionGetByIdAction } from "../Slices/MasterSlice/LocationSlice/LoactionGetById";
+import { ExpenseGetByIdAction } from "../Slices/ExpenseSlice/ExpenseGetById";
+import { CrewGetByIdAction } from "../Slices/MasterSlice/CrewSlice/CrewGetById";
+import { SubCategoryGetByIdAction } from "../Slices/MasterSlice/SubCategorySlice/SubCategoryGetById";
+import { CategoryGetByIdAction } from "../Slices/MasterSlice/CategorySlice/CategoryGetById";
 
 
 const actions = {
@@ -67,6 +71,11 @@ const actions = {
   ...CrewUpdateAction,
   ...LocationUpdateAction,
   ...MovieGetByIdAction,
+  ...LoactionGetByIdAction,
+  ...ExpenseGetByIdAction,
+  ...CrewGetByIdAction,
+  ...SubCategoryGetByIdAction,
+  ...CategoryGetByIdAction,
 
 
 

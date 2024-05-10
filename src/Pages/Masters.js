@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
-import userIcon from "../Assets/wp5609640-broly-computer-wallpapers.jpg";
+import userIcon from "../Assets/user.png";
 import MovieTab from "./MastersTabs/MovieTab";
 import LocationTab from "./MastersTabs/LocationTab";
 import CategoryTab from "./MastersTabs/CategoryTab";

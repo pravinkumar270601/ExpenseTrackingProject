@@ -4,11 +4,12 @@
 /* eslint-disable no-unused-expressions */
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { defaultReject, defaultState } from "../../../constants";
-import { fetchData } from "../../helpers";
+import { defaultReject, defaultState } from "../../../../constants";
+import { fetchData } from "../../../helpers";
 
-const RPTLOADNODROPDOWN = createAsyncThunk(
-  "RptLoadNoDropDown/RptLoadNoDropDown",
+
+const LOACTIONGETBYID = createAsyncThunk(
+  "LoactionGetById/LoactionGetById",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +36,10 @@ const RPTLOADNODROPDOWN = createAsyncThunk(
   }
 );
 
-const RptLoadNoDropDownSlice = createSlice({
-  name: "RptLoadNoDropDownSlice",
+const LoactionGetByIdSlice = createSlice({
+  name: "LoactionGetByIdSlice",
   initialState: {
-    RptLoadNoDropDown: {
+    LoactionGetById: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +47,25 @@ const RptLoadNoDropDownSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(RPTLOADNODROPDOWN.fulfilled, (state, action) => {
-      state.RptLoadNoDropDown = {
-        ...state.RptLoadNoDropDown,
+    builder.addCase(LOACTIONGETBYID.fulfilled, (state, action) => {
+      state.LoactionGetById = {
+        ...state.LoactionGetById,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(RPTLOADNODROPDOWN.pending, (state, action) => {
-      state.RptLoadNoDropDown = {
-        ...state.RptLoadNoDropDown,
+    builder.addCase(LOACTIONGETBYID.pending, (state, action) => {
+      state.LoactionGetById = {
+        ...state.LoactionGetById,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(RPTLOADNODROPDOWN.rejected, (state, action) => {
-      state.RptLoadNoDropDown = {
-        ...state.RptLoadNoDropDown,
+    builder.addCase(LOACTIONGETBYID.rejected, (state, action) => {
+      state.LoactionGetById = {
+        ...state.LoactionGetById,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +74,9 @@ const RptLoadNoDropDownSlice = createSlice({
   },
 });
 
-const RptLoadNoDropDownAction = {
-    RPTLOADNODROPDOWN,
+const LoactionGetByIdAction = {
+    LOACTIONGETBYID,
 };
 
-export { RptLoadNoDropDownAction };
-export default RptLoadNoDropDownSlice.reducer;
+export { LoactionGetByIdAction };
+export default LoactionGetByIdSlice.reducer;

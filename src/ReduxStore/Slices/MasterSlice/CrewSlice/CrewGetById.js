@@ -7,8 +7,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
-const CATEGORYDELETE = createAsyncThunk(
-  "CategoryDelete/CategoryDelete",
+const CREWGETBYID = createAsyncThunk(
+  "CrewGetById/CrewGetById",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const CategoryDeleteSlice = createSlice({
-  name: "CategoryDeleteSlice",
+const CrewGetByIdSlice = createSlice({
+  name: "CrewGetByIdSlice",
   initialState: {
-    CategoryDelete: {
+    CrewGetById: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -46,25 +46,25 @@ const CategoryDeleteSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(CATEGORYDELETE.fulfilled, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(CREWGETBYID.fulfilled, (state, action) => {
+      state.CrewGetById = {
+        ...state.CrewGetById,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.pending, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(CREWGETBYID.pending, (state, action) => {
+      state.CrewGetById = {
+        ...state.CrewGetById,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
-    builder.addCase(CATEGORYDELETE.rejected, (state, action) => {
-      state.CategoryDelete = {
-        ...state.CategoryDelete,
+    builder.addCase(CREWGETBYID.rejected, (state, action) => {
+      state.CrewGetById = {
+        ...state.CrewGetById,
         loading: false,
         error: true,
         ...action.payload,
@@ -73,9 +73,9 @@ const CategoryDeleteSlice = createSlice({
   },
 });
 
-const CategoryDeleteAction = {
-    CATEGORYDELETE,
+const CrewGetByIdAction = {
+    CREWGETBYID,
 };
 
-export { CategoryDeleteAction };
-export default CategoryDeleteSlice.reducer;
+export { CrewGetByIdAction };
+export default CrewGetByIdSlice.reducer;

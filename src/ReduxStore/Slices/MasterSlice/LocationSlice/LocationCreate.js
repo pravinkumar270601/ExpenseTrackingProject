@@ -38,7 +38,7 @@ const LOCATIONCREATE = createAsyncThunk(
 const LocationCreateSlice = createSlice({
   name: "LocationCreateSlice",
   initialState: {
-    MovieCreate: {
+    LocationCreate: {
       ...defaultState.List,
       loading: false, 
       error: false, 

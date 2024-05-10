@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import styled from "@emotion/styled/macro";
 import { Paper } from "@mui/material";
-import * as MASTER from "./Tableentries";
+
 import "./CusTable.css";
 // import SearchIcon from '@mui/icons-material/Search';
 import { IoSearch, IoPencil, IoTrash } from "react-icons/io5";
@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-const CusTable = ({ TableHeading, Tabledata, TableTittle,setmyDefaultFieldValues }) => {
+const CusTable = ({ TableHeading, Tabledata, TableTittle,setmyDefaultFieldValues,handleDelete }) => {
   // console.log(MASTER.TableVaues.map((datas)=>{datas.Sno})
   // console.log(TableHeading, "tableHeading...............");
   // console.log(Tabledata, "Tabledatsss...............");
@@ -80,17 +80,7 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle,setmyDefaultFieldValues
   // console.log(MovieDelete,'delete api')
    
 
-  const handleDelete=(id)=>{
-    // console.log(id,"idididididididididi");
-    // if (MovieDeleteId !== null) {
-      const data = {
-        data: {},
-        method: "DELETE",
-        apiName: `deleteMovie/${id}`,
-      };
-      dispatch(actions.MOVIEDELETE(data));
-  
-  }
+
 
   return (
     <Grid container xs={12} sx={{ width: "100%" }}>
@@ -158,7 +148,7 @@ const CusTable = ({ TableHeading, Tabledata, TableTittle,setmyDefaultFieldValues
                       scope="col"
                       className="thead_data"
                       style={{
-                        color: "rgb(178 183 191 / 92%)",
+                        color: "var(--primary-color)",
                         borderBottom: "1px solid rgb(217 226 231 / 77%)",
                       }}
                     >

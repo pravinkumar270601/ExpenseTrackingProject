@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CustomDropdownMui from "../../Components/CustomDropDown/CustomDropdown";
 import { Container, Grid } from "@mui/material";
 import CusTable from "../../Components/CustomTable/CusTable";
@@ -8,16 +8,41 @@ import * as MASTER from "../../DataEntries/Master/MasterEntries";
 import { useDispatch, useSelector } from "react-redux";
 import actions from "../../ReduxStore/actions/index";
 import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import Toast from "../../Components/Toast/Toaste";
 
 const LocationTab = () => {
+  const [errorMessage, setErrorMessage] = useState(""); // State to hold error message
+  const [apiUpdateId, setapiUpdateId] = useState(null);
+
+  const validationSchema = Yup.object().shape({
+    movie_id: Yup.string().required("Movie name is required"),
+    phoneNumber: Yup.string().required("PhoneNumber is required"),
+  });
+  const [toastMessage, setToastMessage] = useState("");
+  const [backColor, setBackColor] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const [smallBoxes, setSmallBoxes] = useState([]);
   const [locations, setLocations] = useState([""]);
+  const [changebtn, setchangebtn] = useState(true);
   const dispatch = useDispatch();
-  const { LocationCreate } = useSelector((state) => state?.LocationCreate);
+  const formikRef = useRef();
 
+  const { LocationCreate } = useSelector((state) => state?.LocationCreate);
+  const { LocationUpdate } = useSelector((state) => state?.LocationUpdate);
+  const { LocationDelete } = useSelector((state) => state?.LocationDelete);
+
+  // console.log(LocationUpdate)
   // console.log(LocationCreate)
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    // if (locations.some(location => location.trim() === "")) {
+    //   setErrorMessage("Location is Required*");
+    //   // setSubmitting(false);
+    //   return;
+    // }
+
     const phoneNumber = values["phoneNumber"];
     const countryCode = values["phoneNumber_country"];
     const concatenatedPhoneNumber = `${countryCode} ${phoneNumber}`;
@@ -27,39 +52,150 @@ const LocationTab = () => {
       contact_no: concatenatedPhoneNumber,
       location: smallBoxesString,
     });
-    const data1 = {
-      data:{
-        ...values,
-        contact_no: concatenatedPhoneNumber,
-        location: smallBoxesString,
-      } ,
-      method: "post",
-      apiName: "createSpot",
-    };
 
-    dispatch(actions.LOCATIONCREATE(data1));
+    if (changebtn) {
+      const data1 = {
+        data: {
+          ...values,
+          contact_no: concatenatedPhoneNumber,
+          location: smallBoxesString,
+        },
+        method: "post",
+        apiName: "createSpot",
+      };
+
+      dispatch(actions.LOCATIONCREATE(data1));
+      if (LocationCreate?.data) {
+        triggerToast("Successfully Created!");
+        setBackColor("green");
+      }else {
+        triggerToast("failed");
+        setBackColor("red")
+      }
+    }
+
+    // updating fuction for data
+
+    if (changebtn === false) {
+      const data2 = {
+        data: {
+          ...values,
+          contact_no: concatenatedPhoneNumber,
+          location: smallBoxesString,
+        },
+        method: "put",
+        apiName: `updatespot/${apiUpdateId}`,
+      };
+
+      dispatch(actions.LOCATIONUPDATE(data2));
+      setchangebtn(true);
+
+      if (LocationUpdate?.data) {
+        triggerToast("Successfully Updated");
+        setBackColor("green")
+      } else {
+        triggerToast("failed");
+        setBackColor("red")
+      }
+    }
 
     // Reset the form
     handleClearSmallBoxes();
     resetForm();
     setSubmitting(false);
   };
+  const { LoactionGetById } = useSelector((state) => state?.LoactionGetById);
 
-  const setDefaultFieldValues = (setFieldValue) => {
-    setFieldValue("phoneNumber", 11111111);
-    setFieldValue("option", "2");
-    let phoneNumber = "+44 1111111122";
-    let firstThree = phoneNumber.slice(0, 3);
-    // console.log(firstThree);
-    setFieldValue("phoneNumber_country", firstThree);
+  console.log(LoactionGetById.data, "LoactionGetByIdLoactionGetById");
 
-    setSmallBoxes(["pravin", "valla"]);
+  // const setmyDefaultFieldValues = (id) => {
+  //   console.log(id, "edit id");
+  //   const data = { data: {}, method: "get", apiName: `getspotById/${id}` };
+  //   dispatch(actions.LOACTIONGETBYID(data));
+
+  //   const { setFieldValue } = formikRef.current;
+
+  //   if (setFieldValue) {
+  //     let afterThree = LoactionGetById.data?.contact_no;
+  //     afterThree = afterThree?.slice(3);
+  //     setFieldValue("phoneNumber",Number(afterThree));
+  //     setFieldValue("movie_id", LoactionGetById.data?.movie_id);
+  //     let phoneNumber = LoactionGetById.data?.contact_no;
+  //     let firstThree = phoneNumber?.slice(0, 3);
+  //     console.log(firstThree);
+  //     setFieldValue("phoneNumber_country", firstThree);
+
+  //     setSmallBoxes([...LoactionGetById.data?.location?.split(/[\s,]+/)]);
+  //   }
+  //   setchangebtn(false);
+  // };
+  const triggerToast = (message) => {
+    console.log(message, "toast work successfully");
+    setToastMessage(message);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000); // Toast will disappear after 3 seconds
+  };
+  const setmyDefaultFieldValues = async (id) => {
+    console.log(id, "edit id");
+
+    try {
+      const response = await axios.get(
+        `http://122.165.52.124:4000/api/v1/getspotById/${id}`
+      );
+      const LoactionDataid = await response.data;
+      console.log(LoactionDataid.data, "LoactionDataid"); // Assuming your API returns movie data
+
+      const { setFieldValue } = formikRef.current;
+      if (setFieldValue) {
+        let afterThree = LoactionDataid.data?.contact_no;
+        afterThree = afterThree?.slice(3);
+        setFieldValue("phoneNumber", Number(afterThree));
+        setFieldValue("movie_id", LoactionDataid.data?.movie_id);
+        let phoneNumber = LoactionDataid.data?.contact_no;
+        let firstThree = phoneNumber?.slice(0, 3);
+        console.log(firstThree);
+        setFieldValue("phoneNumber_country", firstThree);
+
+        setSmallBoxes(LoactionDataid.data?.location?.split(","));
+        console.log(LoactionDataid.data?.location?.split(","),"LoactionDataid.data?.location?.split");
+
+
+      }
+
+      setchangebtn(false);
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+      // Handle error
+    }
+    setapiUpdateId(id);
   };
 
   const handleClearSmallBoxes = () => {
     setSmallBoxes([]);
     const newLocations = locations.map(() => "");
     setLocations(newLocations);
+  };
+
+  //datele---------
+
+  const handleDelete = (id) => {
+    // console.log(id,"idididididididididi");
+    // if (MovieDeleteId !== null) {
+    const data = {
+      data: {},
+      method: "DELETE",
+      apiName: `deletespot/${id}`,
+    };
+    dispatch(actions.LOCATIONDELETE(data));
+    if (LocationDelete?.data) {
+      triggerToast("Successfully Deleted!");
+      setBackColor("green")
+    } else {
+      triggerToast("failed");
+      setBackColor("red")
+    }
   };
 
   // ----------------------------------------------------
@@ -98,7 +234,7 @@ const LocationTab = () => {
     // console.log("Dispatching LOCATIONTABLEGETALL action:", data1);
     dispatch(actions.LOCATIONTABLEGETALL(data1));
     // console.log(data1, "data1LOCATIONTABLEGETALL.................");
-  }, [dispatch]);
+  }, [LocationCreate, LocationUpdate, LocationDelete]);
 
   const [rowTableData, setRowTableData] = useState([
     {
@@ -116,7 +252,7 @@ const LocationTab = () => {
     if (LocationTableGetAll && LocationTableGetAll.data) {
       LocationTableGetAll?.data?.map((data, index) => {
         return tempArr1.push({
-          // id: data?.company_id,
+          id: data?.spot_id,
           Sno: index + 1,
           MovieName: data.movie_name,
           Location: data.location,
@@ -137,11 +273,13 @@ const LocationTab = () => {
         <Grid item md={12} sx={{ height: "37%" }}>
           <Formik
             initialValues={{
-              movie_name: "",
+              movie_id: "",
               phoneNumber: "",
-              phoneNumber_country: "",
+              phoneNumber_country: "+91",
             }}
+            validationSchema={validationSchema}
             onSubmit={handleSubmit}
+            innerRef={formikRef}
           >
             {({ isSubmitting, resetForm, setFieldValue }) => (
               <Form>
@@ -169,9 +307,11 @@ const LocationTab = () => {
                     >
                       <CustomDropdownMui
                         label="Movie Name"
-                        name="movie_name"
+                        name="movie_id"
                         options={locationMovieDrop}
                         custPlaceholder="Select Movie"
+                        setFieldValue={setFieldValue}
+                        // form={formikRef.current}
                       />
                     </Grid>
                     <Grid
@@ -190,6 +330,7 @@ const LocationTab = () => {
                         setSmallBoxes={setSmallBoxes}
                         locations={locations}
                         setLocations={setLocations}
+                        errorMessage={errorMessage}
                       />
                     </Grid>
                     <Grid
@@ -219,7 +360,7 @@ const LocationTab = () => {
                         marginTop: "10px",
                       }}
                     >
-                      {true ? (
+                      {changebtn ? (
                         <button
                           type="submit"
                           disabled={isSubmitting}
@@ -229,18 +370,27 @@ const LocationTab = () => {
                         </button>
                       ) : (
                         <button
-                          type="button"
-                          onClick={() => setDefaultFieldValues(setFieldValue)}
+                          type="submit"
+                          disabled={isSubmitting}
                           className="expense-submit-btn"
                         >
                           Update
                         </button>
                       )}
+
                       <button
                         type="button"
                         onClick={() => {
                           resetForm();
                           handleClearSmallBoxes();
+                          setchangebtn(true);
+                          if (
+                            locations.some((location) => location.trim() === "")
+                          ) {
+                            setErrorMessage(null);
+                            // setSubmitting(false);
+                            return;
+                          }
                         }}
                         className="expense-cancel-btn"
                       >
@@ -268,6 +418,8 @@ const LocationTab = () => {
                 <CusTable
                   TableHeading={MASTER.LocationTableHeaders}
                   Tabledata={rowTableData}
+                  setmyDefaultFieldValues={setmyDefaultFieldValues}
+                  handleDelete={handleDelete}
                   TableTittle="Location"
                 />
               </Grid>
@@ -275,6 +427,9 @@ const LocationTab = () => {
           </Container>
         </Grid>
       </Grid>
+      {showToast && (
+        <Toast message={toastMessage} backColor={backColor}/>
+      )}
     </div>
   );
 };

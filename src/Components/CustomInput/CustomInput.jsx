@@ -3,35 +3,19 @@ import "./CustomInput.css";
 import "../ComponentsCss/componet.css";
 import { Field, ErrorMessage } from "formik";
 
-const CustomInput = ({ label, name,custPlaceholder, ...rest }) => {
+const CustomInput = ({ label, name,custPlaceholder,inputType, ...rest }) => {
+  const validateInput = (value) => {
+    let error;
+    if (!value) {
+      error =` Field is ${inputType === "text" ? "Required" : "Required"}`;
+    } else if (inputType === "number" && isNaN(value)) {
+      error = "Field is Required";
+    
+    }
+    return error;
+  };
   return (
     <div style={{ width: "85%" }}>
-      {/* <InputLabel
-        htmlFor="movie-name"
-        className="input-heading"
-        sx={{ fontSize: "14px", fontWeight: "700" }}
-      >
-       {inputHeading?inputHeading : "InputText"}
-      </InputLabel>
-      <TextField
-        autoComplete="off"
-        type="text"
-        id="movie-name"
-        placeholder={`${inputPlaceholder?inputPlaceholder:"Enter Input"}`}
-        variant="outlined"
-        value={value}
-        className="custominput-field"
-        onChange={handleChange}
-        InputProps={{
-          sx: {
-            height: "37px",
-            borderRadius: "12px",
-            fontSize:"14px"
-            // width:"90%" ,
-          },
-        }}
-      /> */}
-
       <div style={{ width: "100%" }}>
         <div>
           <label
@@ -45,13 +29,14 @@ const CustomInput = ({ label, name,custPlaceholder, ...rest }) => {
         <Field
           id={name}
           name={name}
-          type="text"
+          type={inputType}
           placeholder={`${custPlaceholder?custPlaceholder:"Enter Input"}`}
           {...rest}
           className='custominput-field'
+          validate={validateInput}
          
         />
-        <ErrorMessage name={name} component="div" />
+        <ErrorMessage name={name} component="div" className="inputs-error-msg" />
       </div>
     </div>
   );

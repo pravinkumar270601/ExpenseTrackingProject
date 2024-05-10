@@ -8,7 +8,7 @@ import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
 const CATEGORYUPDATE = createAsyncThunk(
-  "CatagoryUpdate/CatagoryUpdate",
+  "CategoryUpdate/CategoryUpdate",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const CATEGORYUPDATE = createAsyncThunk(
   }
 );
 
-const CatagoryUpdateSlice = createSlice({
-  name: "CatagoryUpdateSlice",
+const CategoryUpdateSlice = createSlice({
+  name: "CategoryUpdateSlice",
   initialState: {
-    CatagoryUpdate: {
+    CategoryUpdate: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -47,24 +47,24 @@ const CatagoryUpdateSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(CATEGORYUPDATE.fulfilled, (state, action) => {
-      state.CatagoryUpdate = {
-        ...state.CatagoryUpdate,
+      state.CategoryUpdate = {
+        ...state.CategoryUpdate,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(CATEGORYUPDATE.pending, (state, action) => {
-      state.CatagoryUpdate = {
-        ...state.CatagoryUpdate,
+      state.CategoryUpdate = {
+        ...state.CategoryUpdate,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(CATEGORYUPDATE.rejected, (state, action) => {
-      state.CatagoryUpdate = {
-        ...state.CatagoryUpdate,
+      state.CategoryUpdate = {
+        ...state.CategoryUpdate,
         loading: false,
         error: true,
         ...action.payload,
@@ -78,4 +78,4 @@ const CategoryUpdateAction = {
 };
 
 export { CategoryUpdateAction };
-export default CatagoryUpdateSlice.reducer;
+export default CategoryUpdateSlice.reducer;

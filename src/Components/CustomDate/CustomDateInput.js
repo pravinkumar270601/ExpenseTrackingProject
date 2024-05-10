@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Field, ErrorMessage } from "formik";
-import { FaCalendarAlt } from "react-icons/fa";
+import { CiCalendar } from "react-icons/ci";
 import "./CustomDateInput.css";
 import "../ComponentsCss/componet.css";
 
@@ -30,9 +30,10 @@ const CustomDateInput = ({ label, name, ...rest }) => {
             />
           )}
         </Field>
-        <FaCalendarAlt
+        <CiCalendar
           style={{
             position: "absolute",
+            fontSize:"21px",
             // right: '10px',
             cursor: "pointer",
             right: "18px",
@@ -42,7 +43,7 @@ const CustomDateInput = ({ label, name, ...rest }) => {
           onClick={handleIconClick} // Handle click event on the calendar icon
         />
       </div>
-      <ErrorMessage name={name} component="div" />
+      <ErrorMessage name={name} component="div" className="inputs-error-msg" />
     </div>
   );
 };

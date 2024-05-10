@@ -8,7 +8,7 @@ import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
 const SUBCATEGORYDELETE = createAsyncThunk(
-  "SubCatagoryDelete/SubCatagoryDelete",
+  "SubCategoryDelete/SubCategoryDelete",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const SUBCATEGORYDELETE = createAsyncThunk(
   }
 );
 
-const SubCatagoryDeleteSlice = createSlice({
-  name: "SubCatagoryDeleteSlice",
+const SubCategoryDeleteSlice = createSlice({
+  name: "SubCategoryDeleteSlice",
   initialState: {
-    SubCatagoryDelete: {
+    SubCategoryDelete: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -47,24 +47,24 @@ const SubCatagoryDeleteSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(SUBCATEGORYDELETE.fulfilled, (state, action) => {
-      state.SubCatagoryDelete = {
-        ...state.SubCatagoryDelete,
+      state.SubCategoryDelete = {
+        ...state.SubCategoryDelete,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(SUBCATEGORYDELETE.pending, (state, action) => {
-      state.SubCatagoryDelete = {
-        ...state.SubCatagoryDelete,
+      state.SubCategoryDelete = {
+        ...state.SubCategoryDelete,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(SUBCATEGORYDELETE.rejected, (state, action) => {
-      state.SubCatagoryDelete = {
-        ...state.SubCatagoryDelete,
+      state.SubCategoryDelete = {
+        ...state.SubCategoryDelete,
         loading: false,
         error: true,
         ...action.payload,
@@ -78,4 +78,4 @@ const SubCategoryDeleteAction = {
 };
 
 export { SubCategoryDeleteAction };
-export default SubCatagoryDeleteSlice.reducer;
+export default SubCategoryDeleteSlice.reducer;

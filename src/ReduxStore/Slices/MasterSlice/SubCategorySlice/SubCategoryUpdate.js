@@ -8,7 +8,7 @@ import { defaultReject, defaultState } from "../../../../constants";
 import { fetchData } from "../../../helpers";
 
 const SUBCATEGORYUPDATE = createAsyncThunk(
-  "SubCatagoryUpdate/SubCatagoryUpdate",
+  "SubCategoryUpdate/SubCategoryUpdate",
   // eslint-disable-next-line default-param-last
   async (
     // eslint-disable-next-line default-param-last
@@ -35,10 +35,10 @@ const SUBCATEGORYUPDATE = createAsyncThunk(
   }
 );
 
-const SubCatagoryUpdateSlice = createSlice({
-  name: "SubCatagoryUpdateSlice",
+const SubCategoryUpdateSlice = createSlice({
+  name: "SubCategoryUpdateSlice",
   initialState: {
-    SubCatagoryUpdate: {
+    SubCategoryUpdate: {
       ...defaultState.List,
       loading: false, 
       error: false, 
@@ -47,24 +47,24 @@ const SubCatagoryUpdateSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(SUBCATEGORYUPDATE.fulfilled, (state, action) => {
-      state.SubCatagoryUpdate = {
-        ...state.SubCatagoryUpdate,
+      state.SubCategoryUpdate = {
+        ...state.SubCategoryUpdate,
         loading: false,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(SUBCATEGORYUPDATE.pending, (state, action) => {
-      state.SubCatagoryUpdate = {
-        ...state.SubCatagoryUpdate,
+      state.SubCategoryUpdate = {
+        ...state.SubCategoryUpdate,
         loading: true,
         error: false,
         ...action.payload,
       };
     });
     builder.addCase(SUBCATEGORYUPDATE.rejected, (state, action) => {
-      state.SubCatagoryUpdate = {
-        ...state.SubCatagoryUpdate,
+      state.SubCategoryUpdate = {
+        ...state.SubCategoryUpdate,
         loading: false,
         error: true,
         ...action.payload,
@@ -78,4 +78,4 @@ const SubCategoryUpdateAction = {
 };
 
 export { SubCategoryUpdateAction };
-export default SubCatagoryUpdateSlice.reducer;
+export default SubCategoryUpdateSlice.reducer;

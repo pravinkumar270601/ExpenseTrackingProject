@@ -19,10 +19,8 @@ function LocationInput({
   setSmallBoxes,
   locations,
   setLocations,
+  errorMessage,
 }) {
-
-
-
   const handleChangeLacation = (index, value) => {
     const newLocations = [...locations];
     newLocations[index] = value;
@@ -52,11 +50,7 @@ function LocationInput({
       {locations.map((location, index) => (
         <Grid container spacing={2} key={index}>
           <Grid item xs={10}>
-            <label
-              htmlFor="movie-name"
-              className="input-heading"
-             
-            >
+            <label htmlFor="movie-name" className="input-heading">
               {inputHeading ? inputHeading : "InputText"}
             </label>
             <TextField
@@ -87,12 +81,12 @@ function LocationInput({
                 type="button"
                 onClick={handleAddLocation}
                 style={{
-                  marginTop: "47%",
+                  marginTop: "24px",
                   borderRadius: "14px",
                   backgroundColor: "#4318FF",
                   color: "white",
                   height: "37px",
-                  width: "40px",
+                  width: "37px",
                   padding: "8.5px",
                 }}
               />
@@ -100,6 +94,12 @@ function LocationInput({
           )}
         </Grid>
       ))}
+      {!smallBoxes.length &&
+        errorMessage && ( // Show error message if no small boxes and there's an error message present
+          <div style={{ color: "red", marginTop: "5px", fontSize: "12px" }}>
+            {errorMessage}
+          </div>
+        )}
       <div
         style={{ marginTop: "10px", alignItems: "center" }}
         className="small-boxes-container"

@@ -20,7 +20,7 @@ import  MovieCreateSlice from '../Slices/MasterSlice/MovieSlice/MovieCreate';
 import ExpenseDeleteSlice from '../Slices/ExpenseSlice/ExpenseDelete';
 import  MovieDeleteSlice from '../Slices/MasterSlice/MovieSlice/MovieDelete';
 import CategoryDeleteSlice from '../Slices/MasterSlice/CategorySlice/CategoryDelete';
-import SubCatagoryDeleteSlice from '../Slices/MasterSlice/SubCategorySlice/SubCatagoryDelete';
+import SubCategoryDeleteSlice from '../Slices/MasterSlice/SubCategorySlice/SubCatagoryDelete';
 import LocationDeleteSlice from '../Slices/MasterSlice/LocationSlice/LocationDelete';
 import CrewDeleteSlice from '../Slices/MasterSlice/CrewSlice/CrewDelete';
 import ExpenseUpdateSlice from '../Slices/ExpenseSlice/ExpenseUpdate';
@@ -30,6 +30,15 @@ import SubCategoryUpdateSlice from '../Slices/MasterSlice/SubCategorySlice/SubCa
 import LocationUpdateSlice from '../Slices/MasterSlice/LocationSlice/LocationUpdate';
 import CrewUpdateSlice from '../Slices/MasterSlice/CrewSlice/CrewUpdate';
 import MovieGetByIdSlice from '../Slices/MasterSlice/MovieSlice/MovieGetById';
+import LoactionGetByIdSlice from '../Slices/MasterSlice/LocationSlice/LoactionGetById'
+import CategoryGetByIdSlice from '../Slices/MasterSlice/CategorySlice/CategoryGetById';
+import SubCategoryGetByIdSlice from '../Slices/MasterSlice/SubCategorySlice/SubCategoryGetById';
+import CrewGetByIdSlice from '../Slices/MasterSlice/CrewSlice/CrewGetById';
+import ExpenseGetByIdSlice from '../Slices/ExpenseSlice/ExpenseGetById';
+
+
+
+
 
 
 const reducer = combineReducers({
@@ -55,7 +64,7 @@ const reducer = combineReducers({
   ExpenseDelete:ExpenseDeleteSlice,
   MovieDelete:MovieDeleteSlice,
   CategoryDelete:CategoryDeleteSlice,
-  SubCatagoryDelete:SubCatagoryDeleteSlice,
+  SubCategoryDelete:SubCategoryDeleteSlice,
   LocationDelete:LocationDeleteSlice,
   CrewDelete:CrewDeleteSlice,
   ExpenseUpdate:ExpenseUpdateSlice,
@@ -65,6 +74,11 @@ const reducer = combineReducers({
   LocationUpdate:LocationUpdateSlice,
   CrewUpdate:CrewUpdateSlice,
   MovieGetById:MovieGetByIdSlice,
+  LoactionGetById:LoactionGetByIdSlice,
+  CategoryGetById:CategoryGetByIdSlice,
+  SubCategoryGetById:SubCategoryGetByIdSlice,
+  CrewGetById:CrewGetByIdSlice,
+  ExpenseGetById :ExpenseGetByIdSlice,
 
 
 

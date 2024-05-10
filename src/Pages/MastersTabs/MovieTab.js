@@ -7,33 +7,53 @@ import * as MASTER from "../../DataEntries/Master/MasterEntries";
 import actions from "../../ReduxStore/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import Toast from "../../Components/Toast/Toaste";
 
 const MovieTab = () => {
+  const [apiUpdateId,setapiUpdateId]=useState(null)
+  const validationSchema = Yup.object().shape({
+    movie_name: Yup.string().required("Movie name is required *"),
+    active_status: Yup.string().required("Status is required *"),
+  });
+
   const [changebtn, setchangebtn] = useState(true);
   const dispatch = useDispatch();
   const formikRef = useRef();
-
+  const [toastMessage, setToastMessage] = useState("");
+  const [backColor, setBackColor] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const { MovieCreate } = useSelector((state) => state?.MovieCreate);
   const { MovieUpdate } = useSelector((state) => state?.MovieUpdate);
-
+  const { MovieDelete } = useSelector((state) => state?.MovieDelete);
   const { MovieGetById } = useSelector((state) => state?.MovieGetById);
 
-  console.log(MovieGetById);
+  console.log(MovieGetById.data, "MovieGetById.dataMovieGetById.data");
 
   // console.log(MovieUpdate, "MovieCreateMovieCreateMovieCreate");
 
-  console.log(MovieCreate,"MovieCreateMovieCreateMovieCreate")
+  console.log(MovieCreate, "MovieCreateMovieCreateMovieCreate");
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // Handle form submission
     console.log(values);
     if (changebtn === true) {
       const data1 = {
-        data: { ...values, created_on: "2024-04-30" },
+        data: { ...values },
         method: "post",
         apiName: "createMovie",
       };
 
       dispatch(actions.MOVIECREATE(data1));
+      const data = { data: {}, method: "get", apiName: "getmovieDetails" };
+      dispatch(actions.MOVIESTABLEGETALL(data));
+      if (MovieCreate?.data) {
+        triggerToast("Successfully Created!");
+        setBackColor("green");
+      }else {
+        triggerToast("failed");
+        setBackColor("red")
+      }
     }
     // updating fuction for data
 
@@ -41,40 +61,99 @@ const MovieTab = () => {
       const data2 = {
         data: { ...values },
         method: "put",
-        apiName: `updateMovie/${MovieGetById.data.movie_id}`,
+        apiName: `updateMovie/${apiUpdateId}`,
       };
 
-      dispatch(actions.MOVIECREATE(data2));
-      setchangebtn(true)
+      dispatch(actions.MOVIEUPDATE(data2));
+      setchangebtn(true);
+      if (MovieUpdate?.data) {
+        triggerToast("Successfully Updated");
+        setBackColor("green")
+      } else {
+        triggerToast("failed");
+        setBackColor("red")
+      }
+
+      // const data = { data: {}, method: "get", apiName: "getmovieDetails" };
+      // dispatch(actions.MOVIESTABLEGETALL(data));
     }
 
     // console.log("Dispatching MOVIESTABLEGETALL action:", data);
-    const data = { data: {}, method: "get", apiName: "getmovieDetails" };
-    dispatch(actions.MOVIESTABLEGETALL(data));
 
     // Reset the form
     resetForm();
     setSubmitting(false);
   };
-  // Function to set default field values
 
-  const setmyDefaultFieldValues = (id) => {
-    console.log(id, "edit id");
-    const data = { data: {}, method: "get", apiName: `getmovieById/${id}` };
-    dispatch(actions.MOVIEGetById(data));
-    const { setFieldValue } = formikRef.current;
-      if (setFieldValue) {
-        setFieldValue("movie_name", MovieGetById.data.movie_name);
-        setFieldValue("active_status", `${MovieGetById.data.active_status}`);
-      }
-    setchangebtn(false);
+  const triggerToast = (message) => {
+    console.log(message, "toast work successfully");
+    setToastMessage(message);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000); // Toast will disappear after 3 seconds
   };
 
-  // useEffect(() => {
-  //   if (MovieGetById.data) {
-      
+  // Function to set default field values
+
+  // const setmyDefaultFieldValues = (id) => {
+  //   console.log(id, "edit id");
+  //   const data = { data: {}, method: "get", apiName: `getmovieById/${id}` };
+  //   dispatch(actions.MOVIEGetById(data));
+  //   const { setFieldValue } = formikRef.current;
+  //   if (setFieldValue) {
+  //     setFieldValue("movie_name", MovieGetById.data.movie_name);
+  //     setFieldValue("active_status", `${MovieGetById.data.active_status}`);
   //   }
-  // }, [MovieGetById.data.movie_id]);
+  //   setchangebtn(false);
+  // };
+
+  const setmyDefaultFieldValues = async (id) => {
+    console.log(id, "edit id");
+
+    try {
+      const response = await axios.get(
+        `http://122.165.52.124:4000/api/v1/getmovieById/${id}`
+      );
+      const movieDataid = await response.data;
+      console.log(movieDataid.data, "movieDatamovieDatamovieData"); // Assuming your API returns movie data
+
+      const { setFieldValue } = formikRef.current;
+      if (setFieldValue) {
+        setFieldValue("movie_name", movieDataid.data.movie_name);
+        setFieldValue("active_status", `${movieDataid.data.active_status}`);
+      }
+
+      setchangebtn(false);
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+      // Handle error
+    }
+    setapiUpdateId(id)
+  };
+
+  /// dalete--------------------
+
+  const handleDelete = (id) => {
+    // console.log(id,"idididididididididi");
+    // if (MovieDeleteId !== null) {
+    const data = {
+      data: {},
+      method: "DELETE",
+      apiName: `deleteMovie/${id}`,
+    };
+    dispatch(actions.MOVIEDELETE(data));
+
+    const data1 = { data: {}, method: "get", apiName: "getmovieDetails" };
+    dispatch(actions.MOVIESTABLEGETALL(data1));
+    if (MovieDelete?.data) {
+      triggerToast("Successfully Deleted!");
+      setBackColor("green")
+    } else {
+      triggerToast("failed");
+      setBackColor("red")
+    }
+  };
 
   // --------------------------------------------
 
@@ -88,7 +167,7 @@ const MovieTab = () => {
     // console.log("Dispatching MOVIESTABLEGETALL action:", data);
     dispatch(actions.MOVIESTABLEGETALL(data));
     // console.log(data, "MOVIESTABLEGETALL.................");
-  }, [dispatch]);
+  }, [MovieCreate, MovieUpdate, MovieDelete]);
 
   const [rowTableData2, setRowTableData2] = useState([
     {
@@ -98,63 +177,40 @@ const MovieTab = () => {
       Date: "--",
     },
   ]);
-  function getMonthName(monthIndex) {
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    return months[monthIndex];
-  }
+  // function getMonthName(monthIndex) {
+  //   const months = [
+  //     "Jan",
+  //     "Feb",
+  //     "Mar",
+  //     "Apr",
+  //     "May",
+  //     "Jun",
+  //     "Jul",
+  //     "Aug",
+  //     "Sep",
+  //     "Oct",
+  //     "Nov",
+  //     "Dec",
+  //   ];
+  //   return months[monthIndex];
+  // }
   useEffect(() => {
     const tempArr = [];
     MoviesTableGetAll?.data?.map((data, index) => {
-      const currentDate = new Date();
-      const formattedDate = `${currentDate.getDate()} ${getMonthName(
-        currentDate.getMonth()
-      )} ${currentDate.getFullYear()}`;
+      // const currentDate = new Date();
+      // const formattedDate = `${currentDate.getDate()} ${getMonthName(
+      //   currentDate.getMonth()
+      // )} ${currentDate.getFullYear()}`;
       return tempArr.push({
         id: data?.movie_id,
         Sno: index + 1,
         MovieName: data.movie_name,
-        Staus: data.active_status === 1 ? "Active" : "Inactive",
-        Date: formattedDate,
+        Status: data.status,
+        Date: data.created_on,
       });
     });
     setRowTableData2(tempArr);
-  }, [MoviesTableGetAll, dispatch, MoviesTableGetAll.data]);
-
-  // // console.log(rowTableData2, "rowTableData2................................");
-
-  // const[MovieDeleteId,setMovieDeleteId] = useState('')
-  // const {MovieDelete}=useSelector(
-  //   (state)=>state?.MovieDelete
-  // );
-  // console.log(MovieDeleteId,'wwwwwww')
-
-  // useEffect(() => {
-  //   if (MovieDeleteId !== null) {
-  //     const data = {
-  //       data: {},
-  //       method: "DELETE",
-  //       apiName: `deleteMovie/${MovieDeleteId}`,
-  //     };
-  //     dispatch(actions.MOVIEDELETE(data));
-  //   }
-  // }, []);
-
-  // const handleDeleteIdChange = (id) => {
-  //   setMovieDeleteId(id);
-  // }
+  }, [MoviesTableGetAll]);
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -165,6 +221,7 @@ const MovieTab = () => {
               movie_name: "",
               active_status: "",
             }}
+            validationSchema={validationSchema}
             onSubmit={handleSubmit}
             innerRef={formikRef}
           >
@@ -197,6 +254,7 @@ const MovieTab = () => {
                         label="Movie Name"
                         name="movie_name"
                         custPlaceholder="Enter Movie Name"
+                        inputType={"text"}
                       />
                     </Grid>
                     <Grid
@@ -259,7 +317,10 @@ const MovieTab = () => {
                       )}
                       <button
                         type="button"
-                        onClick={() => resetForm()}
+                        onClick={() => {
+                          resetForm();
+                          setchangebtn(true);
+                        }}
                         className="expense-cancel-btn"
                       >
                         Cancel
@@ -287,6 +348,7 @@ const MovieTab = () => {
                   Tabledata={rowTableData2}
                   TableTittle="Movies"
                   setmyDefaultFieldValues={setmyDefaultFieldValues}
+                  handleDelete={handleDelete}
                   // handleDeleteIdChange={handleDeleteIdChange}
                 />
               </Grid>
@@ -294,6 +356,9 @@ const MovieTab = () => {
           </Container>
         </Grid>
       </Grid>
+      {showToast && (
+        <Toast message={toastMessage} backColor={backColor}/>
+      )}
     </div>
   );
 };

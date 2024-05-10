@@ -32,13 +32,13 @@ export const MovieTableHeaders = [
   export const CrewTableHeaders = [
     "S.No",
     "Movie Name",
-    "Location",
+    
     "Category",
     "Subcategory",
     "Crew Name",
     "Gender",
     "Mobile Number",
-    "Nationality",
+    
     "Created Date",
     "Actions",
   ];
