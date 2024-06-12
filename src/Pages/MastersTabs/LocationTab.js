@@ -33,6 +33,12 @@ const LocationTab = () => {
   const { LocationUpdate } = useSelector((state) => state?.LocationUpdate);
   const { LocationDelete } = useSelector((state) => state?.LocationDelete);
 
+  console.log(smallBoxes,"smallBoxes1");
+
+
+
+  
+
   // console.log(LocationUpdate)
   // console.log(LocationCreate)
 
@@ -46,11 +52,11 @@ const LocationTab = () => {
     const phoneNumber = values["phoneNumber"];
     const countryCode = values["phoneNumber_country"];
     const concatenatedPhoneNumber = `${countryCode} ${phoneNumber}`;
-    const smallBoxesString = smallBoxes.join(", ");
+    // const smallBoxesString = smallBoxes.join(", ");
     console.log({
       ...values,
       contact_no: concatenatedPhoneNumber,
-      location: smallBoxesString,
+      locations: smallBoxes,
     });
 
     if (changebtn) {
@@ -58,7 +64,7 @@ const LocationTab = () => {
         data: {
           ...values,
           contact_no: concatenatedPhoneNumber,
-          location: smallBoxesString,
+          locations: smallBoxes,
         },
         method: "post",
         apiName: "createSpot",
@@ -77,11 +83,17 @@ const LocationTab = () => {
     // updating fuction for data
 
     if (changebtn === false) {
+      // console.log(smallBoxes[0].name,"update");
+      console.log({
+        ...values,
+        contact_no: concatenatedPhoneNumber,
+        location: smallBoxes[0].name,
+      },'update1');
       const data2 = {
         data: {
           ...values,
           contact_no: concatenatedPhoneNumber,
-          location: smallBoxesString,
+          location: smallBoxes[0].name,
         },
         method: "put",
         apiName: `updatespot/${apiUpdateId}`,
@@ -158,8 +170,8 @@ const LocationTab = () => {
         console.log(firstThree);
         setFieldValue("phoneNumber_country", firstThree);
 
-        setSmallBoxes(LoactionDataid.data?.location?.split(","));
-        console.log(LoactionDataid.data?.location?.split(","),"LoactionDataid.data?.location?.split");
+        setSmallBoxes([{name:LoactionDataid.data?.location}]);
+        // console.log(LoactionDataid.data?.location?.split(","),"LoactionDataid.data?.location?.split");
 
 
       }

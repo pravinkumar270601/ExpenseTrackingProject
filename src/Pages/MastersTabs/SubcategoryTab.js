@@ -52,11 +52,11 @@ const SubcategoryTab = () => {
   // console.log(SubCategoryCreate);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    const smallBoxesString = smallBoxes.join(", ");
-    console.log({ ...values, sub_category_name: smallBoxesString });
+    // const smallBoxesString = smallBoxes.join(", ");
+    console.log({ ...values, sub_category_names: smallBoxes });
     if (changebtn === true) {
       const data1 = {
-        data: { ...values, sub_category_name: smallBoxesString },
+        data: { ...values, sub_category_names: smallBoxes },
         method: "post",
         apiName: "createSubCategory",
       };
@@ -73,7 +73,7 @@ const SubcategoryTab = () => {
 
     if (changebtn === false) {
       const data2 = {
-        data: { ...values, sub_category_name: smallBoxesString },
+        data: { ...values, sub_category_name: smallBoxes[0].name },
         method: "put",
         apiName: `updateSubCategory/${apiUpdateId}`,
       };
@@ -134,9 +134,12 @@ const SubcategoryTab = () => {
 
       const { setFieldValue } = formikRef.current;
       if (setFieldValue) {
+        console.log("kkkkkk");
         setFieldValue("movie_id", SubCategoryDataid.data?.movie_id);
         setFieldValue("category_id", SubCategoryDataid.data?.category_id);
-        setSmallBoxes(SubCategoryDataid.data?.sub_category_name.split(","));
+        console.log(SubCategoryDataid.data?.category_id,"kkkkkk");
+
+        setSmallBoxes([{name:SubCategoryDataid.data?.sub_category_name}]);
       }
 
       setchangebtn(false);

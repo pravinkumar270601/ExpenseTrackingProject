@@ -30,11 +30,16 @@ function LocationInput({
 
   const handleAddLocation = () => {
     const lastLocation = locations[locations.length - 1];
+
     if (lastLocation.trim() !== "") {
-      setSmallBoxes([...smallBoxes, lastLocation]);
+      console.log(smallBoxes, "smallBoxes");
+      setSmallBoxes([...smallBoxes, { name: lastLocation }]);
+      console.log(smallBoxes, "lastLocation");
+
       // Clear the input field
       const newLocations = [...locations];
       newLocations[locations.length - 1] = ""; // Reset the last location to an empty string
+
       setLocations(newLocations);
     }
   };
@@ -119,7 +124,7 @@ function LocationInput({
               //   height:"30px"
             }}
           >
-            {box}
+            {box.name}
 
             <MdCancel
               onClick={() => handleRemoveBox(index)}

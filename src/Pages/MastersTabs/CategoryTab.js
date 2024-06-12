@@ -40,12 +40,12 @@ const CategoryTab = () => {
   console.log(CategoryCreate);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    const smallBoxesString = smallBoxes.join(", ");
-    console.log({ ...values, category_name: smallBoxesString });
+    // const smallBoxesString = smallBoxes.join(", ");
+    console.log({ ...values, category_names: smallBoxes });
 
     if (changebtn === true) {
       const data1 = {
-        data: { ...values, category_name: smallBoxesString },
+        data: { ...values, category_names: smallBoxes },
         method: "post",
         apiName: "createCategory",
       };
@@ -63,7 +63,7 @@ const CategoryTab = () => {
 
     if (changebtn === false) {
       const data2 = {
-        data: { ...values, category_name: smallBoxesString },
+        data: { ...values, category_name: smallBoxes[0].name },
         method: "put",
         apiName: `updateCategory/${apiUpdateId}`,
       };
@@ -129,7 +129,7 @@ const CategoryTab = () => {
       const { setFieldValue } = formikRef.current;
       if (setFieldValue) {
             setFieldValue("movie_id", CategoryData.data[0]?.movie_id);
-            setSmallBoxes(CategoryData.data[0]?.category_name?.split(","));
+            setSmallBoxes([{name:CategoryData.data[0]?.category_name}]);
           }
 
       setchangebtn(false);
